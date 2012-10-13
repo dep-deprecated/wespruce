@@ -3,9 +3,9 @@ class Project < ActiveRecord::Base
 
   REWARD_POINTS = {1 => 1, 2 => 3, 3 => 12, 4 => 50, 5 => 100}.freeze
 
-  belongs_to :creator,    class_name: 'User', foreign_key: :created_by
-  belongs_to :cleaner,    class_name: 'User', foreign_key: :cleaned_by
-  belongs_to :verifier,  class_name: 'User', foreign_key: :verified_by
+  belongs_to :creator,  class_name: 'User', foreign_key: :created_by
+  belongs_to :cleaner,  class_name: 'User', foreign_key: :cleaned_by
+  belongs_to :verifier, class_name: 'User', foreign_key: :verified_by
 
   after_create :assign_reporter_points
 
@@ -68,10 +68,12 @@ class Project < ActiveRecord::Base
   end
 
   def assign_reporter_points
-    creator.increment!(:points, 1)
+    creator.increment(:points, 1)
+    creator.save
   end
 
   def assign_points
-    cleaner.increment!(:points, REWARD_POINTS[self.rating])
+    cleaner.increment(:points, REWARD_POINTS[self.rating])
+    cleaner.save
   end
 end

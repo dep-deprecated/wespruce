@@ -1,18 +1,31 @@
-<h2>New Project</h2>
+<div class="row-fluid">
+  <div class="span8">
+    <h2>Create a new problem</h2>
+    <p class="lead">So you've identified a problem in your community?  <strong>Great!</strong> Fill out the details below that will enable someone in your community to pick up this problem and resolve it!</p>
 
-<%= simple_form_for(@project) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(@project) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name, required: true, autofocus: true %>
-    <%= f.input :description, required: true %>
-    <%= f.label :rating, required: true %>
-    <%= f.collection_radio_buttons :rating, I18n.t('project.rating').to_a, :first, :last, required: true, :item_wrapper_class => 'inline' %>
-    <%= f.input :latitude, required: true %>
-    <%= f.input :longitude, required: true %>
+      <div class="form-inputs">
+        <%= f.input :name, required: true, autofocus: true %>
+        <%= f.input :description, required: true %>
+        <%= f.label :rating, required: true %>
+        <%= f.collection_radio_buttons :rating, I18n.t('project.rating').to_a, :first, :last, required: true, :item_wrapper_class => 'inline' %>
+        <br>
+        <%= f.input :latitude, required: true %>
+        <%= f.input :longitude, required: true %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Create" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Create" %>
+  <div class="span4">
+    <div class="module de-emphasized-1">
+      <h3>Things to keep in mind</h3>
+      <p>The details you leave here should encompass everything a complete newbie would need to complete this task.  Think of listing what the cleaner might need to complete this problem (vehicles, tools).  The more thorough you are, the better chance someone will have at getting the job done right!</p>
+      <p>Tasks lacking necessary details may be <strong>flagged for removal</strong>, so please provide any details that you think might help!</p>
+    </div>
   </div>
-<% end %>
+</div>

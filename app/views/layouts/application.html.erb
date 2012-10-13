@@ -10,16 +10,17 @@
   <%= stylesheet_link_tag 'bootstrap-mobile', media: 'screen and (max-width: 480px)' %>
   <%= stylesheet_link_tag 'mobile-custom', media: 'screen and (max-width: 480px)' %>
   <%= csrf_meta_tag %>
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="<%= @body_class %>">
   <div class="container-fluid">
     <div id="user_nav">
-      <div id="logo"><%= link_to "WeSpruce", root_path %></div>
+      <div id="logo"><%= link_to "WeSpruce", (user_signed_in? ? projects_path : root_path) %></div>
       <ul>
         <% if user_signed_in? %>
           <li><i class="icon-user"></i>Logged in as <%= link_to current_user.username, "#" %></li>
-          <li><i class="icon-home"></i><%= link_to "Dashboard", "#" %></li>
+          <li><i class="icon-home"></i><%= link_to "Dashboard", profile_path(current_user.username) %></li>
           <li><i class="icon-edit"></i><%= link_to 'Edit profile', edit_user_registration_path %></li>
           <li><i class="icon-off"></i><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
         <% else %>
