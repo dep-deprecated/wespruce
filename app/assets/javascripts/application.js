@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require gmaps
 
+
+// Setting up contextual help
+$(document).ready(function() {
+  init_help();
+});
+
+function init_help() {
+  $(".help").click(function(e) {
+    $(".help-pop").remove();
+    $("body").append("<div class='help-pop'><p>" + $(this).attr("title") + "</p></div>");
+    e.preventDefault();
+  });
+  $(".help-pop").live("click", function() {
+    $(this).remove();
+  });
+}

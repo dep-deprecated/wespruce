@@ -2,9 +2,7 @@
 
 <%# Begin Project Rating %>
 <p>
-  <div class="rating rating-<%= @project.rating %>">
-    Rating: <span><%= @project.rating %><span></p>
-  </div>
+  Rating: <span title="<%= meaning_of_rating @project.rating" class="rating rating-<%= @project.rating %>"><%= @project.rating %><span></p>
 </p>
 <p>
   <%= meaning_of_rating @project.rating %>

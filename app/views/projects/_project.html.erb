@@ -1,1 +1,1 @@
-<p><%= link_to project.name, project_path(project) %> (Rating: <%= project.rating %>) - <%= project.description %></p>
+<p><%= link_to project.name, project_path(project) %> (Rating<a href="#" class="help" title="<%= meaning_of_rating project.rating %>">?</a>: <span title="<%= meaning_of_rating project.rating %>" class="rating rating-<%= project.rating %>">Rating: <span><%= project.rating %></span></span>) - <%= project.description %></p>

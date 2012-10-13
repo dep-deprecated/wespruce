@@ -1,6 +1,6 @@
 module ApplicationHelper
   def meaning_of_rating rating
-    output = "A <strong>#{rating}-star</strong> rating means this is a "
+    output = "A #{rating}-star rating means this is a "
     if rating == 1
       output << "very easy task that should only take a couple of minutes."
     elsif rating == 2
