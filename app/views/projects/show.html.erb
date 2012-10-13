@@ -1,13 +1,20 @@
-<h1><%= @project.name %></h1>
+<div class="row-fluid">
+  <div class="span8">
+    <h1><%= @project.name %></h1>
+    <div class="module emphasized-<%= @project.rating %>">
+      <h3>A <%= @project.rating %>-star project! <span title="<%= meaning_of_rating @project.rating %>" class="help rating rating-<%= @project.rating %>"><%= @project.rating %><span></h3>
+      <p><%= meaning_of_rating @project.rating %></p>
+    </div>
 
-<%# Begin Project Rating %>
-<p>
-  Rating: <span title="<%= meaning_of_rating @project.rating %>" class="rating rating-<%= @project.rating %>"><%= @project.rating %><span></p>
-</p>
-<p>
-  <%= meaning_of_rating @project.rating %>
-</p>
-<%# End Project Rating %>
+    <p class="lead"><%= @project.description %></p>
 
-<h3>Project Details</h3>
-<p><%= @project.description %></p>
+    <i class="icon-map-marker"></i><%= link_to 'Back to projects', projects_path %>
+  </div>
+  <div class="span4">
+    <h3>Location</h3>
+    [map]
+    <h3>Photos</h3>
+    [photo gallery]
+    <p><i class="icon-plus-sign"></i><%= link_to "Add a photo to this project", "#" %></p>
+  </div>
+</div>
