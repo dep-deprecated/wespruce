@@ -72,6 +72,7 @@ after 'deploy:update_code' do
   # Setup Configuration
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   run "cp #{shared_path}/config/twitter.yml #{release_path}/config/twitter.yml"
+  run "cp #{shared_path}/config/facebook.yml #{release_path}/config/facebook.yml"
 
   # Compile Assets
   run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
