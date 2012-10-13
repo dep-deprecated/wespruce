@@ -15,8 +15,6 @@
 //= require jquery_ujs
 //= require gmaps
 
-//= require namespace
-
 //= require_tree ./views
 //= require_tree ./controllers
 
