@@ -11,6 +11,8 @@
 /public/stylesheets/sass_raw
 .sass-cache
 
+.rbenv-vars
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
