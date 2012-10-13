@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>WeSpruce.com - Cleaning up our community, one project at a time.</title>
-  <%= javascript_include_tag 'application' %>
+
   <%= stylesheet_link_tag 'application', 'forms', 'projects', media: 'all' %>
   <%= stylesheet_link_tag 'bootstrap-mobile', media: 'screen and (max-width: 480px)' %>
   <%= stylesheet_link_tag 'mobile-custom', media: 'screen and (max-width: 480px)' %>
@@ -34,5 +34,7 @@
   <div class="footer">
     &copy; 2012 - Perform the Needful - <%= link_to "Privacy", "/pages/privacy" %> | <%= link_to "Terms of Use", "/pages/terms" %>
   </div>
+
+  <%= render 'common/javascript' %>
 </body>
 </html>
