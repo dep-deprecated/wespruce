@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013183038) do
+ActiveRecord::Schema.define(:version => 20121013184345) do
 
   create_table "photos", :force => true do |t|
     t.integer  "owner_id"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(:version => 20121013183038) do
     t.string   "name"
     t.text     "description"
     t.integer  "rating"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "completed_at"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20121013183038) do
     t.integer  "created_by"
     t.integer  "cleaned_by"
     t.integer  "verified_by"
+    t.string   "state",        :default => "new"
   end
 
   create_table "users", :force => true do |t|
