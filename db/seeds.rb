@@ -20,8 +20,8 @@ seeds['projects'].each do |project|
   p = Project.new({created_by: User.find(rand(user_count - 1) + 1).id,
     name: project['name'],
     description: project['description'],
-    latitude: base_lat + rand(0.05),
-    longitude: base_lng - rand(0.05),
+    latitude: base_lat + rand(0.003..0.009),
+    longitude: base_lng - rand(0.003..0.009),
     rating: (rand(4) + 1)
   })
 
