@@ -1,0 +1,19 @@
+projects:
+  -
+    name: "Pile of wood"
+    description: "Someone left a bunch of wood near the empty lot here"
+  -
+    name: "Trash"
+    description: "Just some trash"
+  -
+    name: "Dead bird"
+    description: "Gross dead bird. My kid almost touched it!"
+  -
+    name: "Graffiti"
+    description: ''
+  -
+    name: "Moldy mattress"
+    description: "this mattress has been here almost a week"
+  -
+    name: "Overgrown bushes"
+    description: "These bushes are blocking the sidewalk and make it hard to walk."
