@@ -1,24 +1,38 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row-fluid">
+  <div class="span8">
+    <h2>Edit Your Profile</h2>
+    <p class="lead">Thought of something you need to update?  You can do that here. Just edit the form and click <strong>update</strong> below. Pretty standard, actually.</p>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-    <%= f.input :password_confirmation, :required => false %>
-  <% if f.object.encrypted_password.present? %>
-    <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-  <% end %>
+      <div class="form-inputs">
+        <div class="module">
+          <%= f.input :email, :required => true, :autofocus => true %>
+        </div>
+        <div class="module">
+          <%= f.input :password, :autocomplete => "off", :required => false %>
+          <%= f.input :password_confirmation, :required => false, :hint => "leave it blank if you don't want to change it" %>
+        </div>
+        <div class="module emphasized-2">
+          <% if f.object.encrypted_password.present? %>
+            <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Update" %>
+      </div>
+    <% end %>
+
+    <i class="icon-chevron-left"></i><%= link_to "Back", :back %>
+
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <div class="span4">
+    <div class="module de-emphasized-1">
+    <h3>Cancel my account</h3>
+    <p>We're sorry to see you go. Do feel free to come back at any time, though! Your community will be waiting!</p>
+    <p><i class="icon-remove-sign"></i><%= link_to "Cancel your account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+</div>
