@@ -16,7 +16,6 @@ private
   end
 
   def authorize
-    puts '===============', params[:controller], params[:action], '==============='
     unless current_permission.allow?(params[:controller], params[:action], current_resource)
       redirect_to root_url, alert: 'Not authorized.'
     end
