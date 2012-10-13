@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="span8">
     <h2>Sign up</h2>
-    <p class="lead">You're just a step away from <strong>taking action</strong> in your own town. Good for you! Once you're in, you have the power to clean, report and compete!</p>
+    <p class="lead">You're just a step away from <strong>taking action</strong> in your own town. Good for you! Once you're in, you have the power to clean, report and compete! Already have an account? <%= link_to "Sign in", new_user_session_path %>.</p>
 
     <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>

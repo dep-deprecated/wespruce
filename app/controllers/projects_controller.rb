@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  DEFAULT_IP = '68.54.218.114'
+  DEFAULT_IP = '24.5.177.29'
 
   def index
     @projects = Project.open.page(params[:page])
