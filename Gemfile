@@ -11,6 +11,7 @@ gem 'omniauth-twitter'
 gem 'paperclip',        '~> 3.0'
 gem 'rails',            '3.2.8'
 gem 'simple_form'
+gem 'strong_parameters', github: 'rails/strong_parameters'
 
 group :assets do
   gem 'bootstrap-sass-rails'

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_one :photo, as: :owner
+  has_many :created_projects, class_name: 'Project', foreign_key: :created_by
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
