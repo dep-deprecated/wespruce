@@ -16,7 +16,7 @@
 <% end %>
 
 <% if allow? 'project', 'new' %>
-<p><%= link_to 'Create a new project', new_project_path %></p>
+  <p><i class="icon-plus-sign"></i><%= link_to 'Create a new project', new_project_path %></p>
 <% end %>
 
 <%= paginate @projects %>
