@@ -9,7 +9,6 @@
 /.bundle
 /vendor/bundles
 
-/public/stylesheets/sass_raw
 .sass-cache
 
 # Ignore the default SQLite database.
