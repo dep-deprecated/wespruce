@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>R12Team365</title>
-   <%= javascript_include_tag "application" %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag    "bootstrap-mobile", :media => "only screen and (max-device-width: 480px)" %>
-  <%= csrf_meta_tags %>
+  <title>WeSprout.com - Cleaning up our community, one project at a time.</title>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'bootstrap-mobile', media: 'only screen and (max-device-width: 480px)' %>
+  <%= csrf_meta_tag %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <div id="user_nav">
+    <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.username %></strong>.
+      <%= link_to 'Edit profile', edit_user_registration_path %> |
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign up', new_user_registration_path %> |
+      <%= link_to 'Login', new_user_session_path %> |
+      <%= link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter) %>
+    <% end %>
+  </div>
 
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>
