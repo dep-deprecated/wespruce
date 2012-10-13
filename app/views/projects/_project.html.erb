@@ -1,1 +1,9 @@
-<p><%= link_to project.name, project_path(project) %> (Rating<a href="#" class="help" title="<%= meaning_of_rating project.rating %>">?</a>: <span title="<%= meaning_of_rating project.rating %>" class="rating rating-<%= project.rating %>">Rating: <span><%= project.rating %></span></span>) - <%= project.description %></p>
+<td>
+  <%= link_to (truncate project.name, :length => 30, :omission => "..."), project_path(project) %>
+</td>
+<td>
+  <%= truncate project.description, :length => 145, :omission => "..." %>
+</td>
+<td>
+  <span title="<%= meaning_of_rating project.rating %>" class="help rating rating-<%= project.rating %>"><span><%= project.rating %></span></span>
+</td>
