@@ -3,9 +3,9 @@ class Project < ActiveRecord::Base
 
   REWARD_POINTS = {1 => 1, 2 => 3, 3 => 12, 4 => 50, 5 => 100}.freeze
 
-  belongs_to :creator,    class_name: 'User', foreign_key: :created_by
-  belongs_to :cleaner,    class_name: 'User', foreign_key: :cleaned_by
-  belongs_to :verifier,  class_name: 'User', foreign_key: :verified_by
+  belongs_to :creator,  class_name: 'User', foreign_key: :created_by
+  belongs_to :cleaner,  class_name: 'User', foreign_key: :cleaned_by
+  belongs_to :verifier, class_name: 'User', foreign_key: :verified_by
 
   after_create :assign_reporter_points
 
