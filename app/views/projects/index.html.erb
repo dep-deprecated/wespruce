@@ -1,0 +1,11 @@
+<h1>Projects</h1>
+
+<%= render @projects %>
+
+<% if @projects.blank? %>
+<p>No open projects at this time.</p>
+<% end %>
+
+<p><%= link_to 'Create a new project', new_project_path %></p>
+
+<%= paginate @projects %>

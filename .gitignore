@@ -19,3 +19,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore TextMate 2 properties file
+.tm_properties
