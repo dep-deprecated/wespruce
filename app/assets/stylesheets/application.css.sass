@@ -24,6 +24,8 @@ body
 
     &.icon-twitter
       :background image-url('twitter.png') 0 0 no-repeat
+    &.icon-facebook
+      :background image-url('facebook.png') 0 0 no-repeat
 
 
   #logo
@@ -59,10 +61,13 @@ h1, h2, h3, h4
 h1
   :font-size 30px 
   :font-weight normal
+  :line-height 24px
   :color #777
   span
     :color #999
     :font-size 20px
+  strong
+    :color #783F37
 h2
   :font-size 34px
   :color #333
@@ -95,7 +100,7 @@ img
       :color #fff
 
   &.emphasized-2
-    :background #783F38
+    :background #000565
     *
       :color #fff
 
@@ -104,6 +109,17 @@ img
     *
       :color #fff
 
+  &.emphasized-4
+    :background #00B5FF
+    *
+      :color #fff
+
+  &.emphasized-5
+    :background #783F38
+    *
+      :color #fff
+
+
   &.de-emphasized-1
     :opacity 0.5
 
@@ -111,6 +127,9 @@ a.help
   :font-size 11px
   :position relative
   :top -3px
+
+.help
+  :cursor help
 
 .help-pop
   :position fixed

@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_one :photo, as: :owner
-  has_many :created_projects, class_name: 'Project', foreign_key: :created_by
+  has_many :created_projects,   class_name: 'Project', foreign_key: :created_by
+  has_many :cleaned_projects,   class_name: 'Project', foreign_key: :cleaned_by
+  has_many :verified_projects,  class_name: 'Project', foreign_key: :verified_by
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -13,6 +15,7 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid      = auth.uid
       user.username = auth.info.nickname
+      user.email    = auth.info.email
     end
   end
 

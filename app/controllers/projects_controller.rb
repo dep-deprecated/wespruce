@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+    @project = Project.new(latitude: request.location.latitude, longitude: request.location.longitude)
   end
 
   def create

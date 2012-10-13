@@ -16,12 +16,14 @@
       <ul>
         <% if user_signed_in? %>
           <li><i class="icon-user"></i>Logged in as <%= link_to current_user.username, "#" %></li>
+          <li><i class="icon-map-marker"></i><%= link_to "Dashboard", "#" %></li>
           <li><i class="icon-edit"></i><%= link_to 'Edit profile', edit_user_registration_path %></li>
           <li><i class="icon-off"></i><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><i class="icon-plus-sign"></i><%= link_to 'Sign up', new_user_registration_path %></li>
           <li><i class="icon-thumbs-up"></i><%= link_to 'Sign in', new_user_session_path %></li>
           <li><i class="icon-twitter"></i><%= link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter) %></li>
+          <li><i class="icon-facebook"></i><%= link_to 'Sign in with Facebook', user_omniauth_authorize_path(:facebook) %></li>
         <% end %>
       </ul>
     </div>
@@ -30,7 +32,7 @@
     </div>
   </div>
   <div class="footer">
-    &copy; 2012 - Perform the Needful
+    &copy; 2012 - Perform the Needful - <%= link_to "Privacy", "/pages/privacy" %> | <%= link_to "Terms of Use", "/pages/terms" %>
   </div>
 </body>
 </html>
