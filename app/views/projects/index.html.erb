@@ -6,6 +6,8 @@
 <p>No open projects at this time.</p>
 <% end %>
 
+<% if allow? 'project', 'new' %>
 <p><%= link_to 'Create a new project', new_project_path %></p>
+<% end %>
 
 <%= paginate @projects %>

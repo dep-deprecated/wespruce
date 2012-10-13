@@ -12,7 +12,12 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(params[:project])
+    @project = current_user.created_projects.new(project_params)
     @project.save ? redirect_to(project_path(@project)) : render(:new)
+  end
+
+private
+  def project_params
+    params[:project].permit(:name, :description, :rating)
   end
 end
