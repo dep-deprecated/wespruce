@@ -5,5 +5,5 @@
 
 %script
   - if @user_latlng
-    != "WeSpruce.current_user.lat = '#{@user_latlng['latitude']}';"
-    != "WeSpruce.current_user.lng = '#{@user_latlng['longitude']}';"
+    != "WS.current_user.lat = '#{@user_latlng['latitude']}';"
+    != "WS.current_user.lng = '#{@user_latlng['longitude']}';"

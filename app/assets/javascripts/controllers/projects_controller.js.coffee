@@ -3,7 +3,7 @@ jQuery ($) ->
 
   map_opts =
     div: '#project_map'
-    lat: WeSpruce.current_user.lat
-    lng: WeSpruce.current_user.lng
+    lat: WS.current_user.lat
+    lng: WS.current_user.lng
 
-  WeSpruce.project_map = new WeSpruce.AreaMap( map_opts )
+  WS.project_map = new WS.AreaMap( map_opts, WS.local_projects )

@@ -31,3 +31,8 @@
 <% end %>
 
 <%= paginate @projects %>
+
+<%# Add projects to Javascript %>
+<script>
+  <%= raw("WS.local_projects = #{@projects.to_json};") %>
+</script>
