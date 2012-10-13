@@ -8,6 +8,7 @@
 .DS_Store
 /.bundle
 /vendor/bundles
+/config/initializers/quiet_assets.rb
 
 .sass-cache
 
