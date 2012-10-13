@@ -2,7 +2,7 @@
   <div class="span8">
     <h1>weSpruce <span>makes community service fun, and puts the people where they belong: <strong>in control</strong>.</span></h1>
     <p class="lead">
-      <strong>weSpruce</strong> gamifies community beautification by giving <em>people</em>
+      <strong>weSpruce</strong> turns <em>people-powered</em> community beautification in to a game!
       a platform that makes it quick, easy and fun to clean their home town. So what's going on
       in <strong>YOUR</strong> town? <%= link_to 'Take a peek', projects_path %>.
     </p>
@@ -13,19 +13,23 @@
       own home town. Then, other users can see those problems, fix them, and after they report
       them as done, they get points.
     </p>
+    <p>Read more about the service in our <%= link_to "FAQs", "/pages/faq" %>.</p>
   </div>
   <div class="span4 hidden-phone">
     <div class="module emphasized-1">
       <h3>Report the Problems</h3>
       <p>Find the problem spots in your community. Perhaps it's a pile of tires, a discarded mattress, or a fence that needs mending.</p>
+      <p><%= link_to 'Sign up', new_user_registration_path %> and get started!</p>
     </div>
     <div class="module emphasized-2">
       <h3>Be the Hero!</h3>
       <p>Have the means to fix problems? Want to beautiful your community but don't know how? Just view the map, claim a problem, and <strong>fix it</strong>!</p>
+      <p>Excited? <%= link_to 'Create an account', new_user_registration_path %> and let's go!</p>
     </div>
     <div class="module emphasized-3">
       <h3>Earn Points &amp; Compete</h3>
       <p>Compete in your town to be the best and brightest do-gooder out there. The more problems you fix, the more points and achievements you get. See the top cleaners in each town and <strong>go for the gold</strong>!</p>
+      <p>Start earning points <%= link_to 'right now', new_user_registration_path %>.</p>
     </div>
   </div>
 </div>

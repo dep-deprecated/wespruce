@@ -1,0 +1,9 @@
+-# Google Maps
+%script{ src: 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAz0RTu0_M1USJXhs088eobfsm6YoRh5rU&sensor=false' }
+
+= javascript_include_tag 'application'
+
+%script
+  - if @user_latlng
+    != "WeSpruce.current_user.lat = '#{@user_latlng['latitude']}';"
+    != "WeSpruce.current_user.lng = '#{@user_latlng['longitude']}';"

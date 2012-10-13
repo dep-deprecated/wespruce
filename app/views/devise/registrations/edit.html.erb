@@ -14,7 +14,7 @@
           <%= f.input :password, :autocomplete => "off", :required => false %>
           <%= f.input :password_confirmation, :required => false, :hint => "leave it blank if you don't want to change it" %>
         </div>
-        <div class="module emphasized-2">
+        <div class="module emphasized-5">
           <% if f.object.encrypted_password.present? %>
             <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
           <% end %>

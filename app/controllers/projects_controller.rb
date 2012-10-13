@@ -1,6 +1,13 @@
 class ProjectsController < ApplicationController
+
+  DEFAULT_IP = '68.54.218.114'
+
   def index
     @projects = Project.open.page(params[:page])
+
+    ip = (request.remote_ip == '127.0.0.1') ? DEFAULT_IP : request.remote_ip
+    @geodata = geocode_ip(ip)
+    @user_latlng = @geodata.select { |k,v| %w(latitude longitude).include?(k) } if @geodata
   end
 
   def show
@@ -17,7 +24,9 @@ class ProjectsController < ApplicationController
   end
 
 private
+
   def project_params
     params[:project].permit(:name, :description, :rating, :latitude, :longitude)
   end
+
 end
