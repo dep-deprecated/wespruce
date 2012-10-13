@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_merit
+
   has_one :photo, as: :owner
   has_many :created_projects,   class_name: 'Project', foreign_key: :created_by
   has_many :cleaned_projects,   class_name: 'Project', foreign_key: :cleaned_by
@@ -40,5 +42,16 @@ class User < ActiveRecord::Base
     else
       super
     end
+  end
+
+  def claim_project(project)
+    project.cleaner = self
+    project.accept!
+  end
+
+  def verify_project(project)
+    raise ArgumentError.new("Can't verify your own work!") if project.cleaner == self
+    project.verifier = self
+    project.verify!
   end
 end

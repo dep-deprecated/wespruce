@@ -14,6 +14,7 @@ gem 'paperclip',        '~> 3.0'
 gem 'rails',            '3.2.8'
 gem 'simple_form'
 gem 'strong_parameters', github: 'rails/strong_parameters'
+gem 'merit'
 
 group :assets do
   gem 'bootstrap-sass-rails'
@@ -26,4 +27,5 @@ end
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'pry'
 end
