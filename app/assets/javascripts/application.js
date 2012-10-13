@@ -23,7 +23,7 @@ $(document).ready(function() {
 function init_help() {
   $(".help").click(function(e) {
     $(".help-pop").remove();
-    $("body").append("<div class='help-pop'><p>" + $(this).attr("title") + "</p></div>");
+    $("body").append("<div class='help-pop'><div class='help-title'></div><div class='help-contents'><p>" + $(this).attr("title") + "</p></div>");
     e.preventDefault();
   });
   $(".help-pop").live("click", function() {
