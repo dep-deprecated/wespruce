@@ -6,6 +6,9 @@
     <%= truncate project.description, :length => 145, :omission => "..." %>
   </td>
   <td>
+    <%= truncate project.state %>
+  </td>
+  <td>
     <span title="<%= meaning_of_rating project.rating %>" class="help rating rating-<%= project.rating %>"><span><%= project.rating %></span></span>
   </td>
 </tr>
