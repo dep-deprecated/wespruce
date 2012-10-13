@@ -1,4 +1,10 @@
- <h1>Projects</h1>
+<h1>Current Problems</h1>
+<p class="lead">
+  Here's a map showing problems in your community.  Click on a problem to learn more about it.
+  <% if allow? 'project', 'new' %>
+    Or, you can <%= link_to 'Create a new project', new_project_path %> right now!
+  <% end %>
+</p>
 
 <% if @projects.blank? %>
   <p>No open projects at this time.</p>
