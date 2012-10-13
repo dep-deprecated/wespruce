@@ -1,9 +1,13 @@
 class Project < ActiveRecord::Base
   include AASM
 
+  REWARD_POINTS = {1 => 1, 2 => 3, 3 => 12, 4 => 50, 5 => 100}.freeze
+
   belongs_to :creator,    class_name: 'User', foreign_key: :created_by
   belongs_to :cleaner,    class_name: 'User', foreign_key: :cleaned_by
   belongs_to :verifier,  class_name: 'User', foreign_key: :verified_by
+
+  after_create :assign_reporter_points
 
   has_many :photos, as: :owner
 
@@ -19,7 +23,7 @@ class Project < ActiveRecord::Base
     state :verified,  enter: :set_verified_at
 
     event :accept do
-      transitions to: :active, from: :new, on_transition: :set_cleaner
+      transitions to: :active, from: :new, :guard => :has_cleaner?
     end
 
     event :complete do
@@ -31,7 +35,7 @@ class Project < ActiveRecord::Base
     end
 
     event :verify do
-      transitions to: :verified, from: :completed, on_transition: :set_verifier
+      transitions to: :verified, from: :completed, on_transition: :assign_points
     end
   end
 
@@ -47,6 +51,10 @@ class Project < ActiveRecord::Base
     self.cleaner = user
   end
 
+  def has_cleaner?
+    self.cleaner.present?
+  end
+
   def set_completed_at(time = Time.now)
     self.completed_at = time
   end
@@ -57,5 +65,13 @@ class Project < ActiveRecord::Base
 
   def set_verifier(user)
     self.verifier = user
+  end
+
+  def assign_reporter_points
+    creator.increment!(:points, 1)
+  end
+
+  def assign_points
+    cleaner.increment!(:points, REWARD_POINTS[self.rating])
   end
 end
