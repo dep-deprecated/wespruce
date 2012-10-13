@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013155129) do
+ActiveRecord::Schema.define(:version => 20121013183038) do
 
   create_table "photos", :force => true do |t|
     t.integer  "owner_id"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20121013155129) do
     t.datetime "completed_at"
     t.datetime "verified_at"
     t.integer  "created_by"
+    t.integer  "cleaned_by"
+    t.integer  "verified_by"
   end
 
   create_table "users", :force => true do |t|
