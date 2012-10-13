@@ -7,7 +7,7 @@
     <%= f.input :name, required: true, autofocus: true %>
     <%= f.input :description, required: true %>
     <%= f.label :rating, required: true %>
-    <%= f.collection_radio_buttons :rating, I18n.t('project.rating').to_a, :first, :last, required: true %>
+    <%= f.collection_radio_buttons :rating, I18n.t('project.rating').to_a, :first, :last, required: true, :item_wrapper_class => 'inline' %>
   </div>
 
   <div class="form-actions">
