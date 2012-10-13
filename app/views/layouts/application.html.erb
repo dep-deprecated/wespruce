@@ -9,18 +9,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div id="user_nav">
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.username %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path %> |
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign up', new_user_registration_path %> |
-      <%= link_to 'Login', new_user_session_path %> |
-      <%= link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter) %>
-    <% end %>
+  <div class="container-fluid">
+    <div id="user_nav">
+      <div id="logo"><%= link_to "WeSpruce", root_path %></div>
+      <ul>
+        <% if user_signed_in? %>
+          <li>Logged in as <strong><%= current_user.username %></strong>.</li>
+          <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+          <li><%= link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="container-contents">
+      <%= yield %>
+    </div>
   </div>
-
-  <%= yield %>
+  <div class="footer">
+    &copy; 2012 - Perform the Needful
+  </div>
 </body>
 </html>
