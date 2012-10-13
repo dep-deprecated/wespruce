@@ -207,7 +207,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   twitter = YAML.load_file(Rails.root + 'config/twitter.yml')
-  config.omniauth :twitter, twitter[:consumer_key], twitter[:consumer_secret]
+  config.omniauth :twitter, twitter['consumer_key'], twitter['consumer_secret']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
