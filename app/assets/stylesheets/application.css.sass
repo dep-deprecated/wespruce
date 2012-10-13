@@ -47,3 +47,53 @@ body
   :text-align center
   :font-size 11px
   :color #aaa
+
+/* General Styles */
+h1, h2, h3, h4
+  :font-weight normal
+h1
+  :font-size 30px 
+  :font-weight normal
+  :color #777
+  span
+    :color #999
+    :font-size 20px
+h2
+  :font-size 34px
+  :color #333
+  :text-transform uppercase
+h3
+  :font-size 14px
+
+img
+  :box-shadow 1px 2px 8px #777
+  :margin 0 0 20px
+
+.module
+  :border 1px solid #ddd
+  :-webkit-border-radius 10px
+  :-moz-border-radius 10px
+  :border-radius 10px
+  :padding 10px
+  :margin-bottom 30px
+
+  h2, h3, h4
+    :margin 0
+    :padding 0
+    :font-weight bold
+    :font-size 26px
+
+  &.emphasized-1
+    :background #457848
+    *
+      :color #fff
+
+  &.emphasized-2
+    :background #783F38
+    *
+      :color #fff
+
+  &.emphasized-3
+    :background #8A8946
+    *
+      :color #fff
