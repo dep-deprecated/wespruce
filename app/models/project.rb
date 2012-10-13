@@ -68,10 +68,12 @@ class Project < ActiveRecord::Base
   end
 
   def assign_reporter_points
-    creator.increment!(:points, 1)
+    creator.increment(:points, 1)
+    creator.save
   end
 
   def assign_points
-    cleaner.increment!(:points, REWARD_POINTS[self.rating])
+    cleaner.increment(:points, REWARD_POINTS[self.rating])
+    cleaner.save
   end
 end
