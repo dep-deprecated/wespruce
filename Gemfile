@@ -7,7 +7,8 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'omniauth-twitter'
-gem 'rails', '3.2.8'
+gem 'paperclip',        '~> 3.0'
+gem 'rails',            '3.2.8'
 gem 'simple_form'
 
 group :assets do

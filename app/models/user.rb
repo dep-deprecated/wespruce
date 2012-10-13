@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_one :photo, as: :owner
+
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 

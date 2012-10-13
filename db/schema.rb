@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013034748) do
+ActiveRecord::Schema.define(:version => 20121013044350) do
+
+  create_table "photos", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.string   "kind"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "name"
