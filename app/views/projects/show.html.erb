@@ -1,4 +1,15 @@
 <h1><%= @project.name %></h1>
 
-<p>Rating: <%= @project.rating %></p>
+<%# Begin Project Rating %>
+<p>
+  <div class="rating rating-<%= @project.rating %>">
+    Rating: <span><%= @project.rating %><span></p>
+  </div>
+</p>
+<p>
+  <%= meaning_of_rating @project.rating %>
+</p>
+<%# End Project Rating %>
+
+<h3>Project Details</h3>
 <p><%= @project.description %></p>
