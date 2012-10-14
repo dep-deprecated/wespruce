@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <%= link_to (truncate recent.name, :length => 30, :omission => "..."), project_path(recent) %>
+  </td>
+  <td class="hidden-phone">
+    <%= truncate recent.description, :length => 145, :omission => "..." %>
+  </td>
+  <td>
+    <% if recent.state == "active" %>
+      <%= link_to recent.cleaner.username, profile_path(recent.cleaner.username) %>
+    <% else %>
+      <%= recent.state %>
+    <% end %>
+  </td>
+  <td>
+    <span title="<%= meaning_of_rating recent.rating %>" class="help rating rating-<%= recent.rating %>"><span><%= recent.rating %></span></span>
+  </td>
+  <td>
+    <%= link_to recent.zip_code, projects_by_zipcode_path(recent.zip_code) %>
+  </td>
+</tr>

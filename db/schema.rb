@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014192649) do
+ActiveRecord::Schema.define(:version => 20121014230958) do
 
   create_table "badges_sashes", :force => true do |t|
     t.integer  "badge_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20121014192649) do
     t.integer  "cleaned_by"
     t.integer  "verified_by"
     t.string   "state",        :default => "new"
+    t.string   "zip_code"
   end
 
   create_table "sashes", :force => true do |t|
