@@ -18,3 +18,19 @@ Badge.create!({
   :id => 1,
   :name => 'active-user'
 })
+
+Badge.create!({
+  :id => 2,
+  :name => 'first-report'
+})
+
+Badge.create!({
+  :id => 3,
+  :name => 'first-validation'
+})
+
+Badge.create!({
+  :id => 4,
+  :name => '24-hours-work'
+})
+
