@@ -7,14 +7,20 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <%= f.input :name, required: true, autofocus: true %>
+        <%= f.input :name, required: true, autofocus: true, maxlength: 145 %>
         <%= f.input :description, required: true %>
         <%= f.label :rating, required: true %>
         <%= f.collection_radio_buttons :rating, I18n.t('project.rating').to_a, :first, :last, required: true, :item_wrapper_class => 'inline' %>
         <br>
-        <%= f.input :latitude, required: true %>
-        <%= f.input :longitude, required: true %>
-        <%= link_to "Use my current location", "#", id: 'geolocate', remote: true %>
+        <div style="display:none">
+          <%= f.input :latitude, required: true %>
+          <%= f.input :longitude, required: true %>
+        </div>
+        <div class="module">
+          <h3>Attach your location</h3>
+          <div id="map_preview"></div>
+          <%= link_to "Use my current location", "#", class: 'geolocate', remote: true %>
+        </div>
       </div>
 
       <div class="form-actions">
