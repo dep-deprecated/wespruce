@@ -35,7 +35,7 @@ class AreaMap
     lat = evt.latLng.lat()
     lng = evt.latLng.lng()
     @gmap.addMarker(_.extend(@new_project_opts, {lat: lat, lng: lng}))
-    setTimeout(((evt) => @createNewProject(lat, lng)), 600)
+    setTimeout(((evt) => @createNewProject(lat, lng)), 800)
 
   createNewProject: (lat, lng) ->
     $form = @$new_project_form
