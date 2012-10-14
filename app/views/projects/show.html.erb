@@ -46,6 +46,7 @@
         <% end %>
       </div>
     <% end %>
+    <br>
     <% if current_user && @project.cleaned_by == current_user.id && @project.state != 'verified' %>
       <div class="module emphasized-4">
         <h3>Add an after photo</h3>
