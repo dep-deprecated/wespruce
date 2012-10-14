@@ -20,8 +20,15 @@
     <br>
     <div class="module">
       <h3>Attach your location</h3>
-      <%= link_to 'Use my current location', '#', class: 'geolocate', remote: true %>
+      <div>
+        <%= link_to 'Use my current location', '#', class: 'geolocate', remote: true %>
+        <span>or</span>
+        <input type="text" id="address" placeholder="Enter your address"></input>
+        <a href="#" id="submit_address" class="btn btn-submit">Find me</a>
+      </div>
+
       <div id="map_preview"></div>
+
       <%= f.input :latitude, required: true, as: :hidden %>
       <%= f.input :longitude, required: true, as: :hidden %>
     </div>

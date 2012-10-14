@@ -17,10 +17,24 @@ jQuery ($) ->
   WS.project_map = new WS.AreaMap( map_opts, WS.local_projects )
 
 success = (position) ->
-    $('#project_latitude').val(position.coords.latitude)
-    $('#project_longitude').val(position.coords.longitude)
-    $('#map_preview iframe').remove()
-    $('#map_preview').append('<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=' + position.coords.latitude + ',' + position.coords.longitude + '&amp;ie=UTF8&amp;output=embed"></iframe>')
+  lat = position.coords.latitude
+  lng = position.coords.longitude
+
+  map_defaults =
+    div: '#map_preview'
+    mapTypeControl: false
+    panControl: false
+    disableDoubleClickZoom: true
+
+  # Set hidden form fields
+  $('#project_latitude').val(lat)
+  $('#project_longitude').val(lng)
+
+  WS.previewMap = new GMaps( _.extend(map_defaults, {lat: lat, lng: lng}) )
+  $('#map_preview').css('height', '300px')
+
+  #$('#map_preview iframe').remove()
+  # $('#map_preview').append('<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=' + position.coords.latitude + ',' + position.coords.longitude + '&amp;ie=UTF8&amp;output=embed"></iframe>')
 
 error = () ->
   alert("Error getting location")
@@ -37,4 +51,23 @@ jQuery ($) ->
   $streets = $('#streetview')
 
   latlng = new google.maps.LatLng($streets.data('lat'), $streets.data('lng'))
-  WS.project_street_view = new google.maps.StreetViewPanorama(document.getElementById('streetview'), {visible: true, position: latlng})
+  # WS.project_street_view = new google.maps.StreetViewPanorama(document.getElementById('streetview'), {position: latlng})
+
+
+# NEW
+jQuery ($) ->
+  return unless $('body.projects.new').length > 0
+
+  WS.updateMap = (data) ->
+    console.log(data)
+    return unless WS.previewMap
+    latlng = new google.maps.LatLng(data.latitude, data.longitude)
+    WS.previewMap.setCenter(latlng)
+
+  WS.searchAddress = (evt) ->
+    console.log('WTF')
+    evt.preventDefault()
+    $.get('/projects/search', {data: {query: $('#address').val()}, success: WS.updateMap })
+    return false
+
+  $('#submit_address').click( WS.searchAddress )
