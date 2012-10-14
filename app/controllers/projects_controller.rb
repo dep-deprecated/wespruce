@@ -27,6 +27,30 @@ class ProjectsController < ApplicationController
     @project.save ? redirect_to(project_path(@project)) : render(:new)
   end
 
+  def claim
+    @project = Project.find(params[:id])
+    current_user.claim_project(@project)
+    redirect_to @project, notice: "You have claimed this project"
+  end
+
+  def unclaim
+    @project = Project.find(params[:id])
+    @project.unaccept!
+    redirect_to @project, notice: "You have removed from this project"
+  end
+
+  def complete
+    @project = Project.find(params[:id])
+    @project.complete!
+    redirect_to @project, notice: "You have marked this project as complete"
+  end
+
+  def verify
+    @project = Project.find(params[:id])
+    current_user.verify_project(@project)
+    redirect_to @project, notice: "You have verified that this project is complete"
+  end
+
 private
   def geocode(query)
     begin

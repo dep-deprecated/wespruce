@@ -14,8 +14,8 @@ class Project < ActiveRecord::Base
 
   scope :open, where(completed_at: nil)
   scope :verified, where(state: 'verified')
-  scope :completed, where(state: 'completed')
-  scope :active, where(state: 'active')
+  scope :completed, where(state: 'complete')
+  scope :active, where(state: 'activa')
 
   validates_presence_of :name, :description, :rating, :latitude, :longitude
 
@@ -28,6 +28,10 @@ class Project < ActiveRecord::Base
 
     event :accept do
       transitions to: :active, from: :new, :guard => :has_cleaner?
+    end
+
+    event :unaccept do
+      transitions to: :new, from: :active, on_transition: :clear_cleaner
     end
 
     event :complete do
@@ -79,6 +83,10 @@ class Project < ActiveRecord::Base
   def assign_points
     cleaner.increment(:points, REWARD_POINTS[self.rating])
     cleaner.save
+  end
+
+  def clear_cleaner
+    self.update_attribute(:cleaner, nil)
   end
 
   def to_time

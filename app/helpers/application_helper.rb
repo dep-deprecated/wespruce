@@ -35,4 +35,19 @@ module ApplicationHelper
 
     return output.html_safe
   end 
+
+  def notice_tag
+    return unless flash[:notice].present?
+    content_tag(:div, 'class' => 'text-warning') do
+      flash.notice
+    end
+  end
+
+  def error_tag
+    return unless flash[:error].present?
+    content_tag(:div, 'class' => 'text-error') do
+      flash.error
+    end
+
+  end
 end

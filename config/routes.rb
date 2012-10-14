@@ -3,7 +3,15 @@ R12Team365::Application.routes.draw do
 
   get 'users/profile/:username', to: 'users/profile#show', as: :profile
 
-  resources :projects
+  resources :projects do
+    member do
+      post :claim
+      post :verify
+      post :unclaim
+      post :complete
+    end
+  end
+
   get 'projects/zipcode/:zipcode', to: 'projects#index', zipcode: /\d{5}/, as: 'projects_by_zipcode'
 
   get 'pages/:action', to: 'pages', action: /[a-z-]+/, as: :page
