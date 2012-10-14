@@ -35,7 +35,7 @@ module ApplicationHelper
     output << "</div>"
 
     return output.html_safe
-  end 
+  end
 
   def notice_tag
     return unless flash[:notice].present?
