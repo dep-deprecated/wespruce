@@ -10,11 +10,7 @@ class ProjectMarker
     @map.addMarker(marker_opts)
 
   infoWindowContent: (project) ->
-    p = project
-    "<div id='project_#{p.id}'><h6>#{p.name}</h6><p>#{p.description}</p><div class='rating rating-#{p.rating}'></div>"
-
-  stars: (rating) ->
-    '*' for star in rating
+    ich.project_info_window(project)
 
 
 window.WS.ProjectMarker = ProjectMarker

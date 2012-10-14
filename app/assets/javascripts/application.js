@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require underscore
+//= require icanhaz-0.10
 //= require jquery
 //= require jquery_ujs
 //= require gmaps
