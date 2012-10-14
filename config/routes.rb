@@ -5,6 +5,7 @@ R12Team365::Application.routes.draw do
 
   resources :projects do
     member do
+      post :comment
       post :claim
       post :verify
       post :unclaim
@@ -13,6 +14,8 @@ R12Team365::Application.routes.draw do
   end
 
   get 'projects/zipcode/:zipcode', to: 'projects#index', zipcode: /\d{5}/, as: 'projects_by_zipcode'
+
+  get 'leaderboard/:zipcode', to: 'leaderboard#by_zipcode', zipcode: /\d{5}/, as: 'leaderboard_by_zipcode'
 
   get 'pages/:action', to: 'pages', action: /[a-z-]+/, as: :page
   root to: 'pages#root'

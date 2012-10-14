@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   include AASM
+  acts_as_commentable
   reverse_geocoded_by :latitude, :longitude
 
   REWARD_POINTS = {1 => 1, 2 => 3, 3 => 12, 4 => 50, 5 => 100}.freeze

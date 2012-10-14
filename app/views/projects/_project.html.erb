@@ -6,14 +6,18 @@
     <%= truncate project.description, :length => 145, :omission => "..." %>
   </td>
   <td>
-    <%= truncate project.state %>
+    <% if project.state == "active" %>
+      <%= link_to project.cleaner.username, profile_path(project.cleaner.username) %>
+    <% else %>
+      <%= project.state %>
+    <% end %>
   </td>
   <td>
     <span title="<%= meaning_of_rating project.rating %>" class="help rating rating-<%= project.rating %>"><span><%= project.rating %></span></span>
   </td>
-<% if project.respond_to?(:distance) %>
-  <td>
-    <%= project.distance.round(2) %> miles
-  </td>
-<% end %>
+  <% if project.respond_to?(:distance) %>
+    <td>
+      <%= project.distance.round(2) %> miles
+    </td>
+  <% end %>
 </tr>
