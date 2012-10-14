@@ -21,8 +21,7 @@
   </div>
   <div class="span4">
     <h3>Location <small>(<%= link_to "Get directions", "https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=#{@project.latitude},#{@project.longitude}&ie=UTF8", :target => "_blank" %>)</small></h3>
-    <img src="<%= static_google_map_with_marker(@project.latitude, @project.longitude) %>"/>
-
+    <img src="<%= static_google_map_with_marker(@project.latitude, @project.longitude) %>" width="275" />
     <br><br>
     <% if @project.photos.length > 0 %>
       <div class="project_photos before">
