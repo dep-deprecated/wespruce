@@ -19,31 +19,27 @@ class AreaMap
     @$new_project_form = $('#new_project_form')
 
   registerEvents: ->
-    @$new_project_marker.on({ dragstart: @startNewProjectDrag })
-    # google.maps.event.addListener( @gmap.map, 'dragend', @newProjectDrop )
-    # google.maps.event.addListener( @gmap.map, 'drop', @newProjectDrop )
-    google.maps.event.addListener( @gmap.map, 'mouseup', @newProjectDrop )
+    google.maps.event.addDomListener( @gmap.map, 'dblclick', @newProjectDrop )
 
   addMarkers: (projects) ->
     for project in projects
       marker = new WS.ProjectMarker(@gmap, project)
 
-  startNewProjectDrag: (evt) =>
-    @draggingNewProject = true
-
   stopNewProjectDrag: (evt) =>
     @draggingNewProject = false
 
+  allowDrop: (evt) =>
+    evt.preventDefault()
+
   newProjectDrop: (evt) =>
-    if @draggingNewProject
-      lat = evt.latLng.lat()
-      lng = evt.latLng.lng()
-      @gmap.addMarker(_.extend(@new_project_opts, {lat: lat, lng: lng}))
-      @createNewProject(lat, lng)
-      @stopNewProjectDrag()
+    lat = evt.latLng.lat()
+    lng = evt.latLng.lng()
+    @gmap.addMarker(_.extend(@new_project_opts, {lat: lat, lng: lng}))
+    setTimeout(((evt) => @createNewProject(lat, lng)), 600)
 
   createNewProject: (lat, lng) ->
     $form = @$new_project_form
+
     $form.find('[name="project[latitude]"]').val(lat)
     $form.find('[name="project[longitude]"]').val(lng)
     $form.modal({backdrop: 'static', keyboard: true})

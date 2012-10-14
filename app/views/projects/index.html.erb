@@ -21,8 +21,7 @@
 
   <% if user_signed_in? && allow?('project', 'new') %>
     <div id="project_controls">
-      <div id="new_project_marker" draggable="true"><img src="http://maps.google.com/mapfiles/marker_green.png"/><p>New Project Marker</p></div>
-      <h6>Drag me to the map to create a new project!</h6>
+      <h6>Double click anywhere on the map to create a new project!</h6>
     </div>
     <%= render 'projects/new_project_modal' %>
   <% end %>
