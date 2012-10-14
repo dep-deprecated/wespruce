@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'aasm'
+gem 'acts_as_commentable', '3.0.1'
 gem 'capistrano'
 gem 'devise'
 gem 'geocoder'
