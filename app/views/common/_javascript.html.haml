@@ -5,6 +5,9 @@
 
 = javascript_include_tag 'application'
 
+-# Fancy Box
+= javascript_include_tag 'fancybox/jquery.fancybox.pack.js'
+
 %script
   - if @user_latlng
     != "WS.current_user.lat = '#{@user_latlng['latitude']}';"
