@@ -9,15 +9,17 @@
 
     <p class="lead"><%= @project.description %></p>
 
-    <div>
+    <hr>
+    <div class="comments">
       <h3>Comments</h3>
-      <%= render partial: 'projects/comment', collection: @comments %>
-    <% if @comments.blank? %>
-      <p>No comments at this time.</p>
-    <% end %>
+      <div class="comments-inner">
+          <%= render partial: 'projects/comment', collection: @comments %>
+          <% if @comments.blank? %>
+            <p>No comments at this time.</p>
+          <% end %>
+      </div>
       <%= render partial: 'comment_form' if current_user %>
     </div>
-
   </div>
   <div class="span4">
     <p><%= project_edit_link(@project, current_user) %></p>
