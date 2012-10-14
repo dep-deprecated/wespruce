@@ -12,6 +12,8 @@ class ProjectsController < ApplicationController
     @projects = Project.open.
       near([@user_latlng['latitude'], @user_latlng['longitude']], 20, order: :distance).
       page(params[:page])
+
+    @recents = Project.last(5)
   end
 
   def show

@@ -1,7 +1,12 @@
 class Project < ActiveRecord::Base
   include AASM
   acts_as_commentable
-  reverse_geocoded_by :latitude, :longitude
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.zip_code = geo.postal_code
+    end
+  end
+  after_validation :reverse_geocode
 
   REWARD_POINTS = {1 => 1, 2 => 3, 3 => 12, 4 => 50, 5 => 100}.freeze
 
