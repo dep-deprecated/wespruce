@@ -3,7 +3,7 @@
     <%= link_to (truncate project_personal.name, :length => 30, :omission => "..."), project_path(project_personal) %>
   </td>
   <td>
-    <% if project_personal.cleaned_by == current_user.id  %>
+    <% if project_personal.cleaned_by == @user.id  %>
       Cleaner
     <% else %>
       Reporter
@@ -16,4 +16,3 @@
     <span title="<%= meaning_of_rating project_personal.rating %>" class="help rating rating-<%= project_personal.rating %>"><span><%= project_personal.rating %></span></span>
   </td>
 </tr>
-
