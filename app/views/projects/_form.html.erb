@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-  <% if @project.editable?(current_user) %>
+  <% if @project.new_record? || @project.editable?(current_user) %>
     <%= f.input :name, required: true, autofocus: true, maxlength: 145 %>
     <%= f.input :description, required: true %>
     <%= f.label :rating, required: true %>
