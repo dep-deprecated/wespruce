@@ -14,6 +14,7 @@
         <br>
         <%= f.input :latitude, required: true %>
         <%= f.input :longitude, required: true %>
+        <%= link_to "Use my current location", "#", id: 'geolocate', remote: true %>
       </div>
 
       <div class="form-actions">
