@@ -31,6 +31,7 @@ success = (position) ->
   $('#project_longitude').val(lng)
 
   WS.previewMap = new GMaps( _.extend(map_defaults, {lat: lat, lng: lng}) )
+  WS.previewMap.addMarker({lat: lat, lng: lng})
   $('#map_preview').css('height', '300px')
 
   #$('#map_preview iframe').remove()
@@ -59,15 +60,26 @@ jQuery ($) ->
   return unless $('body.projects.new').length > 0
 
   WS.updateMap = (data) ->
-    console.log(data)
-    return unless WS.previewMap
-    latlng = new google.maps.LatLng(data.latitude, data.longitude)
-    WS.previewMap.setCenter(latlng)
+
+    console.log data
+    if WS.previewMap
+      WS.previewMap.setCenter({lat: data.latitude, lng: data.longitude})
+      WS.previewMap.addMarker({lat: data.latitude, lng: data.longitude})
+
+    else
+      map_defaults =
+        div: '#map_preview'
+        mapTypeControl: false
+        panControl: false
+        disableDoubleClickZoom: true
+
+      WS.previewMap = new GMaps( _.extend(map_defaults, {lat: data.latitude, lng: data.longitude}) )
+      WS.previewMap.addMarker({lat: data.latitude, lng: data.longitude})
+      $('#map_preview').css('height', '300px')
 
   WS.searchAddress = (evt) ->
-    console.log('WTF')
     evt.preventDefault()
-    $.get('/projects/search', {data: {query: $('#address').val()}, success: WS.updateMap })
+    $.get('/projects/search', {query: $('#address').val()}, WS.updateMap )
     return false
 
   $('#submit_address').click( WS.searchAddress )
