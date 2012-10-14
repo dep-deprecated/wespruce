@@ -60,12 +60,17 @@ jQuery ($) ->
   return unless $('body.projects.new').length > 0
 
   WS.updateMap = (data) ->
+
+    # Set hidden form fields
+    $('#project_latitude').val(data.latitude)
+    $('#project_longitude').val(data.longitude)
+
     if WS.previewMap
       WS.previewMap.setCenter(data.latitude, data.longitude)
       WS.previewMap.addMarker({lat: data.latitude, lng: data.longitude})
 
     else
-      map_defaults =
+      map_defaults  =
         div: '#map_preview'
         mapTypeControl: false
         panControl: false
