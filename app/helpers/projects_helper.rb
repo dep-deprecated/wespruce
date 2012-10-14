@@ -16,12 +16,12 @@ module ProjectsHelper
         output += button_to "I will do this", claim_project_path(project), class: "btn btn-success btn-large" if project.new? && project.creator != current_user
       end
     elsif project.active?
-      output += link_to project.cleaner.username, profile_path(project.cleaner)
+      output += link_to project.cleaner.username, profile_path(project.cleaner.username)
       output << " is currently working on this."
       output += button_to "Unclaim", unclaim_project_path(project), class: "btn btn-danger" if project.cleaner == current_user
       output += button_to "Mark as Complete", complete_project_path(project), class: "btn btn-success" if project.cleaner == current_user
     elsif project.completed?
-      output += link_to project.cleaner.username, profile_path(project.cleaner)
+      output += link_to project.cleaner.username, profile_path(project.cleaner.username)
       output << " has completed this project. "
       if project.cleaner == current_user
           output += link_to 'Ready to add an after photo?', edit_project_path(@project)
