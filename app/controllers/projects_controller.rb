@@ -41,6 +41,7 @@ private
   end
 
   def project_params
-    params[:project].permit(:name, :description, :rating, :latitude, :longitude)
+    params[:project].permit(:name, :description, :rating, :latitude, :longitude,
+                            { photos_attributes: [:image, :kind] })
   end
 end
