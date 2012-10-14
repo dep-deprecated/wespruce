@@ -1,5 +1,5 @@
-<div class="module">
-  <h4><%= comment.title %></h4>
+<div class="comment">
   <p><%= comment.comment %></p>
-  <p>-- <%= comment.user.username %></p>
+  <p>-- <%= link_to comment.user.username, profile_path(comment.user.username) %></p>
 </div>
+<hr>
