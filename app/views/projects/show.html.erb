@@ -1,7 +1,9 @@
 <%= render "shared/sharethis" %>
 <div class="row-fluid">
   <div class="span8">
-    <h1><%= @project.name %></h1><br>
+    <h1><%= @project.name %></h1>
+    <h3>Created by <%= link_to @project.creator.username, profile_path(@project.creator.username) %></h3>
+    <br>
     <div class='module emphasized-6' id="status-box">
       <h3>Problem Status</h3>
       <%= project_button @project %>
