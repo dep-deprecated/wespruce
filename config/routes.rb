@@ -14,6 +14,8 @@ R12Team365::Application.routes.draw do
 
   get 'projects/zipcode/:zipcode', to: 'projects#index', zipcode: /\d{5}/, as: 'projects_by_zipcode'
 
+  get 'leaderboard/:zipcode', to: 'leaderboard#by_zipcode', zipcode: /\d{5}/, as: 'leaderboard_by_zipcode'
+
   get 'pages/:action', to: 'pages', action: /[a-z-]+/, as: :page
   root to: 'pages#root'
 end
