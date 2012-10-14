@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   DEFAULT_IP = ENV['USER_IP'] || '24.5.177.29'
 
   def index
-    @user_latlng =  if params[:zipcode]
+    @user_latlng =  if params[:zipcode] =~ /\A\d{5}\Z/
                       geocode(params[:zipcode])
                     else
                       (request.remote_ip == '127.0.0.1') ? geocode(DEFAULT_IP) : request.location.data

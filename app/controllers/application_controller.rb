@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if request.referer == new_user_session_url
-      projects_path
+      projects_by_zipcode_path(resource.zip_code)
     else
-      request.env['omniauth.origin'] || stored_location_for(resource) || projects_path
+      request.env['omniauth.origin'] || stored_location_for(resource) || projects_by_zipcode_path(resource.zip_code)
     end
   end
 

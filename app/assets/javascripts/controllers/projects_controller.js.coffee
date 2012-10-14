@@ -1,10 +1,17 @@
 jQuery ($) ->
   return unless $('body.projects.index').length > 0
 
+  if WS.local_projects && WS.local_projects.length > 0
+    lat = WS.local_projects[0].latitude
+    lng = WS.local_projects[0].longitude
+  else
+     lat = WS.current_user.lat
+     lng = WS.current_user.lng
+
   map_opts =
     div: '#project_map'
-    lat: WS.local_projects[0].latitude
-    lng: WS.local_projects[0].longitude
+    lat: lat
+    lng: lng
 
   WS.project_map = new WS.AreaMap( map_opts, WS.local_projects )
 
