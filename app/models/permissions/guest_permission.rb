@@ -6,7 +6,7 @@ module Permissions
       allow 'devise/sessions',      [:new, :create, :destroy]
       allow :omniauth_callbacks,    [:passthru, :twitter]
 
-      allow :leaderboard, [:by_zipcode]
+      allow :leaderboard, [:index, :by_zipcode]
       allow :pages,       [:root, :faq, :privacy, :terms]
       allow :projects,    [:index, :show]
     end
