@@ -105,7 +105,6 @@ ActiveRecord::Schema.define(:version => 20121014192649) do
     t.integer  "sash_id"
     t.integer  "points",                 :default => 0
     t.integer  "level",                  :default => 0
-    t.string   "zipcode"
     t.string   "zip_code"
   end
 

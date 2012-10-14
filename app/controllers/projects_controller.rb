@@ -46,6 +46,14 @@ class ProjectsController < ApplicationController
     redirect_to(project_path(@project))
   end
 
+  def remove_comment
+    @project = Project.find(params[:id])
+    if current_user == @project.creator
+      @project.comments.find(params[:comment_id]).destroy
+    end
+    redirect_to project_path(@project), notice: "Comment removed"
+  end
+
   def claim
     @project = Project.find(params[:id])
     current_user.claim_project(@project)

@@ -7,6 +7,7 @@ R12Team365::Application.routes.draw do
     get :search, on: :collection
     member do
       post :comment
+      delete :remove_comment
       post :claim
       post :verify
       post :unclaim
