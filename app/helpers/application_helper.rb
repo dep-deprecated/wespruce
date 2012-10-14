@@ -19,4 +19,20 @@ module ApplicationHelper
 
     return output.html_safe
   end
+
+  def generate_badge user
+    output = "<div class='badge badge-#{user.sash_id}'>"
+    if user.sash_id == 1
+      output << "Reporter"
+    elsif user.sash_id == 2
+      output << "Cleaner"
+    elsif user.sash_id == 3
+      output << "Validator"
+    elsif user.sash_id == 4
+      output << "Full-day Warrior"
+    end
+    output << "</div>"
+
+    return output.html_safe
+  end 
 end
