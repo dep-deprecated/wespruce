@@ -1,29 +1,31 @@
 <div class="row-fluid">
   <div class="span8">
-    <h1>weSpruce <span>makes community service fun, and puts the people where they belong: <strong>in control</strong>.</span></h1>
+    <h1>weSpruce <span>evolves local community service by putting people <strong>in control</strong>.</span></h1>
     <p class="lead">
       <strong>weSpruce</strong> turns <em>people-powered</em> community beautification in to a game!
-      a platform that makes it quick, easy and fun to clean their home town. So what's going on
-      in <strong>YOUR</strong> town? <%= link_to 'Take a peek', projects_path %>.
+      This platform enables you to quickly and easily clean your own home town. Report and fix problems,
+      earn points and compete to be the best do-gooder in your town!
+      So what's going on in <strong>YOUR</strong> town? <%= link_to 'Take a peek', projects_path %>.
     </p>
-    <%= image_tag "http://bit.ly/SW3kFb", :class => "shadow", :width => "560", :height => "295", :alt => "Map Example" %>
+    <%= image_tag "http://bit.ly/SW3kFb", :class => "shadow", :alt => "Map Example" %>
     <p>
       It works by enabling users to report <strong>problem spots</strong> within their community.
       With the power of <strong>Google Maps</strong>, users can report problems right in their
       own home town. Then, other users can see those problems, fix them, and after they report
-      them as done, they get points.
+      them as done, they get points. More points means more achievements. The more you participate,
+      the higher your score. Interact with other locals through comments, photos, and profiles!
     </p>
     <p>Read more about the service in our <%= link_to "FAQs", "/pages/faq" %>.</p>
   </div>
   <div class="span4 hidden-phone">
     <div class="module emphasized-4" onclick="document.location.href='<%= new_user_registration_path %>'">
-      <h3>Report the Problems</h3>
-      <p>Find the problem spots in your community. Perhaps it's a pile of tires, a discarded mattress, or a fence that needs mending.</p>
+      <h3>Report Problems</h3>
+      <p>Find the problem spots in your community. Perhaps it's a pile of tires, a discarded mattress, or a fence that needs mending. You're part of the solution! Add photos, converse with locals -- connect!</p>
       <p><%= link_to 'Sign up', new_user_registration_path %> and get started!</p>
     </div>
     <div class="module emphasized-3" onclick="document.location.href='<%= new_user_registration_path %>'">
       <h3>Be the Hero!</h3>
-      <p>Have the means to fix problems? Want to beautiful your community but don't know how? Just view the map, claim a problem, and <strong>fix it</strong>!</p>
+      <p>Have the means to fix problems? Want to beautiful your community but don't know how? Just view the map, claim a problem, and <strong>fix it</strong>! Maybe you'll even want to share your accomplishment with a photo. It's that easy.</p>
       <p>Excited? <%= link_to 'Create an account', new_user_registration_path %> and let's go!</p>
     </div>
     <div class="module emphasized-5" onclick="document.location.href='<%= new_user_registration_path %>'">

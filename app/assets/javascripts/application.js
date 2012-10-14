@@ -23,6 +23,7 @@
 // Setting up contextual help
 $(document).ready(function() {
   init_help();
+  init_fancybox();
 });
 
 function init_help() {
@@ -33,5 +34,16 @@ function init_help() {
   });
   $(".help-pop").live("click", function() {
     $(this).remove();
+  });
+}
+
+function init_fancybox() {
+  $('.fancybox-media').fancybox({
+      openEffect  : 'none',
+      closeEffect : 'none',
+      helpers : {
+          overlay : null,
+          media : {}
+      }
   });
 }

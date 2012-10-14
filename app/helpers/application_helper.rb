@@ -50,4 +50,15 @@ module ApplicationHelper
     end
 
   end
+
+  def static_google_map_with_marker(lat, lng, opts = {})
+    latlng_str = [lat, lng].join(',')
+    opts[:size] ||= "325x325"
+    opts[:zoom] ||= "16"
+
+    param_str = opts.map { |k,v| "&#{k}=#{v}" }.join
+
+    "http://maps.google.com/maps/api/staticmap?center=#{latlng_str}#{param_str}&markers=color:green%7Clabel:+%7C#{latlng_str}&sensor=false"
+  end
+
 end

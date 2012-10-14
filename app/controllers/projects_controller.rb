@@ -51,6 +51,15 @@ class ProjectsController < ApplicationController
     redirect_to @project, notice: "You have verified that this project is complete"
   end
 
+  def edit
+    @project = current_user.projects.find(params[:id])
+    redirect_to(projects_path) unless @project
+  end
+
+  def update
+
+  end
+
 private
   def geocode(query)
     begin
@@ -65,6 +74,7 @@ private
   end
 
   def project_params
-    params[:project].permit(:name, :description, :rating, :latitude, :longitude)
+    params[:project].permit(:name, :description, :rating, :latitude, :longitude,
+                            { photos_attributes: [:image, :kind] })
   end
 end

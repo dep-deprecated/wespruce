@@ -3,7 +3,7 @@
     <h2>Create a new problem</h2>
     <p class="lead">So you've identified a problem in your community?  <strong>Great!</strong> Fill out the details below that will enable someone in your community to pick up this problem and resolve it!</p>
 
-    <%= simple_form_for(@project) do |f| %>
+    <%= simple_form_for(@project, html: { multipart: true }) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
@@ -16,10 +16,13 @@
           <h3>Attach your location</h3>
           <%= link_to "Use my current location", "#", class: 'geolocate', remote: true %>
           <div id="map_preview"></div>
+          <%= f.input :latitude, required: true, as: :hidden %>
+          <%= f.input :longitude, required: true, as: :hidden %>
         </div>
-        <div style="display:">
-          <%= f.input :latitude, required: true %>
-          <%= f.input :longitude, required: true %>
+        <div class="module">
+          <h3>Attach a before photo</h3>
+          <%= f.input 'photos_attributes[][image]', label: 'Image', as: :file, required: false %>
+          <%= f.input 'photos_attributes[][kind]', as: :hidden, input_html: { value: 'before' } %>
         </div>
       </div>
 

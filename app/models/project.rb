@@ -10,7 +10,8 @@ class Project < ActiveRecord::Base
 
   after_create :assign_reporter_points
 
-  has_many :photos, as: :owner
+  has_many :photos, as: :owner, dependent: :destroy
+  accepts_nested_attributes_for :photos
 
   scope :open, where(completed_at: nil)
   scope :verified, where(state: 'verified')
