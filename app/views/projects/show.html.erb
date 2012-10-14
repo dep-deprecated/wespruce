@@ -19,6 +19,26 @@
     <p class="lead"><%= @project.description %></p>
 
     <i class="icon-map-marker"></i><%= link_to 'Back to projects', "javascript:history.back(-1)" %>
+
+    <div class='module'>
+      <% if @project.new? %>
+        <% if @project.creator == current_user %>
+          <p>Noone has claimed this project yet</p>
+        <% else %>
+          <%= button_to "I want to help", claim_project_path(@project) if @project.new? && @project.creator != current_user %>
+        <% end %>
+      <% elsif @project.active? %>
+        <%= link_to @project.cleaner.username, profile_path(@project.cleaner) %> volunteered to fix this.
+        <%= button_to "Unclaim", unclaim_project_path(@project) if @project.cleaner == current_user %>
+        <%= button_to "Mark as Complete", complete_project_path(@project) if @project.cleaner == current_user %>
+      <% elsif @project.completed? %>
+        <%= link_to @project.cleaner.username, profile_path(@project.cleaner) %> has completed this project.
+        <%= button_to "Verify as fixed", verify_project_path(@project) if @project.creator == current_user %>
+      <% elsif @project.verified? %>
+        <p>This project is done!</p>
+      <% end %>
+    </div>
+
   </div>
   <div class="span4">
     <h3>Location <small>(<%= link_to "Get directions", "https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=#{@project.latitude},#{@project.longitude}&ie=UTF8", :target => "_blank" %>)</small></h3>

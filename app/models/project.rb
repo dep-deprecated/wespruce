@@ -31,6 +31,10 @@ class Project < ActiveRecord::Base
       transitions to: :active, from: :new, :guard => :has_cleaner?
     end
 
+    event :unaccept do
+      transitions to: :new, from: :active, on_transition: :clear_cleaner
+    end
+
     event :complete do
       transitions to: :completed, from: [:active, :reopened]
     end
@@ -92,6 +96,10 @@ class Project < ActiveRecord::Base
   def assign_points
     cleaner.increment(:points, REWARD_POINTS[self.rating])
     cleaner.save
+  end
+
+  def clear_cleaner
+    self.update_attribute(:cleaner, nil)
   end
 
   def to_time
