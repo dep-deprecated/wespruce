@@ -1,5 +1,7 @@
 <div class="comment">
   <p><%= comment.comment %></p>
-  <p>-- <%= link_to comment.user.username, profile_path(comment.user.username) %></p>
+  <p>-- <%= link_to comment.user.username, profile_path(comment.user.username) %>
+    <%= link_to "(X)", remove_comment_project_path(@project, comment_id: comment.id), {method: "delete"} if @project.creator == current_user %>
+  </p>
 </div>
 <hr>
