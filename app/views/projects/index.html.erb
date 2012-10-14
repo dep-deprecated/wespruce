@@ -4,7 +4,12 @@
 
 <p class="lead">
   Here's a map showing problems in this community.  Click on a problem to learn more about it.
-  Check out the <%= link_to 'leaderboard', leaderboard_path %> for this area.
+
+<% if params[:zipcode] %>
+  Check out the <%= link_to 'leaderboard', leaderboard_by_zipcode_path(params[:zipcode]) %> for this area.
+<% else %>
+  Check out the global <%= link_to 'leaderboards', leaderboard_path %>.
+<% end %>
 </p>
 
   <% if not user_signed_in? %>
