@@ -1,20 +1,19 @@
 <%= render "shared/sharethis" %>
 
 <h1>Current Problems</h1>
+
 <p class="lead">
   Here's a map showing problems in this community.  Click on a problem to learn more about it.
-  Check out the <%= link_to 'Leaderboard', leaderboard_path %>.
-<p>
+  Check out the <%= link_to 'leaderboard', leaderboard_path %> for this area.
 </p>
 
-<% if not user_signed_in? %>
-  <p class="lead"><%= link_to "Create an account", new_user_registration_path %> and join the effort today!</p>
-<% else %>
-  <p class="lead">Check out the <%= link_to 'Leaderboard', leaderboard_by_zipcode_path(current_user.zip_code) %> for this area.
-  <% if allow? 'project', 'new' %>
-    Or you can <%= link_to 'create a new problem', new_project_path %> right now!</p>
-  <% end %>
-<% end if %>
+  <% if not user_signed_in? %>
+    <p class="lead"><%= link_to "Create an account", new_user_registration_path %> and join the effort today!</p>
+  <% else %>
+    <% if allow? 'project', 'new' %>
+      <p class="lead">Or you can <%= link_to 'create a new problem', new_project_path %> right now!</p>
+    <% end %>
+  <% end if %>
 
 <% if @projects.blank? %>
   <p>No open problems at this time.</p>
@@ -23,8 +22,8 @@
   <div id="project_map"></div>
 
   <% if user_signed_in? && allow?('project', 'new') %>
-    <div id="project_controls">
-      <h6>Double click anywhere on the map to create a new project!</h6>
+    <div id="project_controls" class="hidden-phone">
+      <strong>Double click</strong> anywhere on the map to create a new project, or <%= link_to 'manually enter one', new_project_path %>.
     </div>
     <%= render 'projects/new_project_modal' %>
   <% end %>

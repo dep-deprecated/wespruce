@@ -7,6 +7,7 @@ class AreaMap
   defaults:
     mapTypeControl: false
     panControl: false
+    disableDoubleClickZoom: true
 
   constructor: (opts = {}, projects = [] ) ->
     @gmap = new GMaps(_.extend(@defaults, opts))
@@ -34,7 +35,7 @@ class AreaMap
   newProjectDrop: (evt) =>
     lat = evt.latLng.lat()
     lng = evt.latLng.lng()
-    @gmap.addMarker(_.extend(@new_project_opts, {lat: lat, lng: lng}))
+    @newProjectMarker = @gmap.addMarker(_.extend(@new_project_opts, {lat: lat, lng: lng}))
     setTimeout(((evt) => @createNewProject(lat, lng)), 800)
 
   createNewProject: (lat, lng) ->
@@ -45,8 +46,12 @@ class AreaMap
     $form.modal({backdrop: 'static', keyboard: true})
 
     # Set hide on cancel button
-    $form.find('.btn-cancel').on('click', (evt) -> $form.modal('hide'))
+    $form.find('.btn-cancel').on('click', @cancelProject)
     $form.on('hidden', (evt) -> $form.find('.btn-cancel').off('click'))
+
+  cancelProject: (evt) =>
+    @$new_project_form.modal('hide')
+    @newProjectMarker.setVisible(false)
 
   new_project_opts:
     animation: google.maps.Animation.BOUNCE
