@@ -2,13 +2,15 @@
 
 <h1>Current Problems</h1>
 <p class="lead">
-  Here's a map showing problems in your community.  Click on a problem to learn more about it.
+  Here's a map showing problems in this community.  Click on a problem to learn more about it.
+  Check out the <%= link_to 'Leaderboard', leaderboard_path %>.
+<p>
 </p>
 
 <% if not user_signed_in? %>
   <p class="lead"><%= link_to "Create an account", new_user_registration_path %> and join the effort today!</p>
 <% else %>
-  <p class="lead">Check out the <%= link_to 'Leaderboard'.html_safe, leaderboard_by_zipcode_path(current_user.zip_code) %> for this area.
+  <p class="lead">Check out the <%= link_to 'Leaderboard', leaderboard_by_zipcode_path(current_user.zip_code) %> for this area.
   <% if allow? 'project', 'new' %>
     Or you can <%= link_to 'create a new problem', new_project_path %> right now!</p>
   <% end %>

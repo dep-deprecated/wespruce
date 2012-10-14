@@ -10,7 +10,14 @@
   <% for user in @users %>
     <tr>
       <td width="20"><%= i %></td>
-      <td><%= link_to user.username, profile_path(user.username) %> <%= generate_badge user %></td>
+      <td>
+        <%= link_to user.username, profile_path(user.username) %>
+        <% if @user.badges.any? %>
+          <% user.badges.each do |badge| %>
+            <%= generate_badge badge %>
+          <% end %>
+        <% end %>
+      </td>
       <td><%= user.points %></td>
     </tr>
     <% i = i + 1 %>
