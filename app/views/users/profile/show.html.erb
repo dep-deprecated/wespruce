@@ -30,7 +30,7 @@
       <h3><%= @user.username %> has <%= @user.points %> points<a href="#" class="help" title="The more problems you clean and report, the higher your score. The higher the score, the more badges you earn.">?</a></h3>
 
       <% if user_in_top_3? %>
-        <p><% if current_user == @user %>You are<% else %>This user<% end %> is in <b><%= place %></b> place in zipcode <%= @user.zip_code %>!</p>
+        <p><% if current_user == @user %>You are<% else %>This user is<% end %> in <b><%= place %></b> place in zipcode <%= @user.zip_code %>!</p>
       <% end %>
 
       <% if @user.badges.any? %>
