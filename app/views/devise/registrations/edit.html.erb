@@ -15,11 +15,11 @@
           <%= f.input :password, autocomplete: 'off', required: false %>
           <%= f.input :password_confirmation, required: false, hint: "leave it blank if you don't want to change it" %>
         </div>
+      <% if f.object.encrypted_password.present? %>
         <div class="module emphasized-5">
-        <% if f.object.encrypted_password.present? %>
           <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-        <% end %>
         </div>
+      <% end %>
       </div>
 
       <div class="form-actions">
