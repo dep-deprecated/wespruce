@@ -47,7 +47,7 @@ $ () ->
 
 # SHOW
 jQuery ($) ->
-  return unless $('body.projects.show').length > 0 || $('body.projects.edit').length > 0
+  return unless $('body.projects.show').length > 0
 
   $streets = $('#streetview')
 
@@ -57,7 +57,7 @@ jQuery ($) ->
 
 # NEW
 jQuery ($) ->
-  return unless $('body.projects.new').length > 0
+  return unless $('body.projects.new').length > 0 || $('body.projects.edit').length > 0
 
   WS.updateMap = (data) ->
 
