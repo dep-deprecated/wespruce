@@ -6,6 +6,7 @@ class ProjectMarker
       lng: project.longitude
       infoWindow:
         content: @infoWindowContent(project)
+      animation: google.maps.Animation.DROP
 
     @map.addMarker(marker_opts)
 

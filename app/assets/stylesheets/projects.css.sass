@@ -20,10 +20,13 @@
 blockquote
   :font-size 12px
 
+
 #project_map
-  width: 100%
+  width: 80%
+  margin-right: 4%
   height: 400px
   margin-bottom: 20px
+  float: left
 
   img
     max-width: none
@@ -49,6 +52,22 @@ blockquote
     .actions
       margin: 0 15px 0 0
 
+#project_controls
+  width: 8%
+  padding: 2%
+  border: 2px solid #cdc
+  border-radius: 6px
+
+  div:first-child
+
+  #new_project_marker
+    display: block
+    width: 20px
+    height: 60px
+    background: url(http://maps.google.com/mapfiles/marker_green.png) no-repeat
+    text-indent: -9999em
+
+
 .project_photos
   &.before
     img
@@ -59,3 +78,24 @@ blockquote
       :max-width 100px
       :float left
       :margin 0 5px
+
+/* Modal
+.modal-body
+  padding-bottom: 2em
+
+  .name
+    .input
+      float: left
+      margin-right: 20px
+
+      input
+        width: 280px
+
+    .input.select select
+      width: 150px
+
+  .desc
+    clear: both
+    textarea
+      width: 450px
+      height: 6em

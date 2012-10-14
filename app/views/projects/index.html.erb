@@ -15,7 +15,15 @@
   <p>No open problems at this time.</p>
   <div id="project_map"></div>
 <% else %>
-  <div id="project_map"></div><br/>
+  <div id="project_map"></div>
+
+  <% if user_signed_in? %>
+    <div id="project_controls">
+      <div id="new_project_marker" draggable="true">New Project</div>
+    </div>
+    <%= render 'projects/new_project_modal' %>
+  <% end if %>
+
   <table border="0" cellspacing="0" cellpadding="0" width="100%" class="table table-striped table-bordered">
     <thead>
       <th width="200">Problem</th>

@@ -1,0 +1,22 @@
+#new_project_form.modal.hide.fade
+
+  %header.modal-header
+    %h3
+      New Project
+
+  = simple_form_for :project do |f|
+    .modal-body
+      %div.name
+        = f.input :name
+        = f.input :rating, collection: (1..5), required: true, :item_wrapper_class => 'inline'
+      %div.desc
+        = f.input :description, as: :text
+
+      %h4
+        Attach a before photo
+      = f.input 'photos_attributes[][image]', label: 'Image', as: :file, required: false
+      = f.input 'photos_attributes[][kind]', as: :hidden, input_html: { value: 'before' }
+
+    .modal-footer
+      %input{ class: 'btn btn-cancel', type: 'cancel', value: 'Cancel'}
+      = f.button :submit, class: 'btn btn-success'
