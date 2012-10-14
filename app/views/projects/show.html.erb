@@ -34,8 +34,7 @@
 
     <%# MAP %>
     <h3>Location <small>(<%= link_to "Get directions", "https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=#{@project.latitude},#{@project.longitude}&ie=UTF8", :target => "_blank" %>)</small></h3>
-    <div id="streetview" data-lat="<%= @project.latitude %>" data-lng="<%= @project.longitude %>"></div>
-    <%#<img class="project-map" src="<%= static_google_map_with_marker(@project.latitude, @project.longitude)" width="275" />%>
+    <img class="project-map" src="<%= static_google_map_with_marker(@project.latitude, @project.longitude) %>"/>
 
     <%# PHOTOS %>
     <% if @project.photos.length > 0 %>
