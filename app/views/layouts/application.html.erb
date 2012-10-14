@@ -26,7 +26,7 @@
     <div id="header">
       <div id="logo"><%= link_to "WeSpruce", (user_signed_in? ? projects_by_zipcode_path(current_user.zip_code) : root_path) %></div>
       <ul id="user_nav">
-        <li class="hidden-phone"><%= form_tag projects_path, method: 'get' do %><%= text_field_tag 'zipcode', nil,  placeholder: "Enter a ZIP Code (ex. #{current_user.try(:zip_code)})" %><% end %></li>
+        <li class="hidden-phone"><%= form_tag projects_path, method: 'get' do %><%= text_field_tag 'zipcode', nil,  placeholder: "Enter a ZIP Code #{current_user.try(:zip_code)}" %><% end %></li>
         <% if user_signed_in? %>
           <li>
             <div class="btn-group">
