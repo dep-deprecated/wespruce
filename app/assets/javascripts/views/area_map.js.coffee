@@ -7,7 +7,6 @@ class AreaMap
   defaults:
     mapTypeControl: false
     panControl: false
-    zoomControl: true
 
   constructor: (opts = {}, projects = [] ) ->
     @gmap = new GMaps(_.extend(@defaults, opts))

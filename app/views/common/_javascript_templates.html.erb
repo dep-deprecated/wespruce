@@ -1,7 +1,16 @@
 <script id="project_info_window" type="text/html">
-  <div id="project_{{id}}">
-    <h6><a href="/projects/{{id}}">{{name}}</h6>
-    <p>{{description}}</p>
+  <div class="project_info" id="project_{{id}}">
+    <h4><a href="/projects/{{id}}">{{name}}</a></h4>
+    <div class="desc">{{description}}</div>
+    {{#image}}
+    <div class="image">
+      <img src="{{image}}"/>
+    </div>
+    {{/image}}
+    <div class="actions">
+      <a href="/projects/{{id}}" class="btn btn-info">Learn More</a>
+      <a href="/projects/{{id}}" class="btn btn-success">I've got this!</a>
+    </div>
     <div class='rating rating-{{rating}}'></div>
   </div>
 </script>
