@@ -12,3 +12,8 @@
     </div>
   </div>
 </div>
+
+<%# Add project to Javascript %>
+<script>
+  <%= raw("WS.project = #{@project.to_json};") %>
+</script>

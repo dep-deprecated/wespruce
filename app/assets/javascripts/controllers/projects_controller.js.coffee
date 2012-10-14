@@ -86,3 +86,7 @@ jQuery ($) ->
     return false
 
   $('#submit_address').click( WS.searchAddress )
+
+
+  if $('body.projects.edit').length > 0
+    WS.updateMap({latitude: WS.project.latitude, longitude: WS.project.longitude})
