@@ -19,7 +19,12 @@
     <%= f.collection_radio_buttons :rating, I18n.t('project.rating').to_a, :first, :last, required: true, :item_wrapper_class => 'inline' %>
     <br>
     <div class="module">
-      <h3>Attach your location</h3>
+      <% if @project.new_record? %>
+        <h3>Attach your location</h3>
+      <% else %>
+        <h3>Update your location</h3>
+        <p>Has the location for this problem changed?</p>
+      <% end %>
       <div>
         <%= link_to 'Use my current location', '#', class: 'geolocate', remote: true %>
         <span>or</span>
