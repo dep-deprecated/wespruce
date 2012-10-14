@@ -13,6 +13,9 @@ class Project < ActiveRecord::Base
   has_many :photos, as: :owner
 
   scope :open, where(completed_at: nil)
+  scope :verified, where(state: 'verified')
+  scope :completed, where(state: 'completed')
+  scope :active, where(state: 'active')
 
   validates_presence_of :name, :description, :rating, :latitude, :longitude
 
@@ -76,5 +79,20 @@ class Project < ActiveRecord::Base
   def assign_points
     cleaner.increment(:points, REWARD_POINTS[self.rating])
     cleaner.save
+  end
+
+  def to_time
+    case rating
+    when 1
+      15.minutes
+    when 2
+      60.minutes
+    when 3
+      2.hours
+    when 4
+      4.hours
+    when 5
+      8.hours
+    end
   end
 end
