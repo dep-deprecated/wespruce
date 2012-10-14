@@ -25,9 +25,6 @@
 $(document).ready(function() {
   init_help();
   init_fancybox();
-  if ($('.geolocate').length > 0) {
-    $('.geolocate').trigger('click');
-  }
 });
 
 function init_help() {
