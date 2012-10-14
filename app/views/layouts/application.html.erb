@@ -36,8 +36,9 @@
                 <li><%= link_to '<i class="icon-map-marker"></i>My Town'.html_safe + " (#{current_user.try(:zip_code)})", projects_by_zipcode_path(current_user.zip_code) %></li>
                 <li><%= link_to '<i class="icon-screenshot"></i>Near Me'.html_safe, projects_path %></li>
                 <li><%= link_to '<i class="icon-plus-sign"></i>New Problem'.html_safe, new_project_path %></li>
-                <li><%= link_to '<i class="icon-edit"></i>Account'.html_safe, edit_user_registration_path %></li>
+                <li><%= link_to '<i class="icon-th-list"></i>The Leaderboard'.html_safe, leaderboard_by_zipcode_path(current_user.zip_code) %></li>
                 <li class="divider"></li>
+                <li><%= link_to '<i class="icon-edit"></i>Account'.html_safe, edit_user_registration_path %></li>
                 <li><%= link_to '<i class="icon-off"></i>Sign out'.html_safe, destroy_user_session_path, method: :delete %></li>
               </ul>
             </div>

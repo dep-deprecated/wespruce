@@ -6,8 +6,9 @@
 <% if not user_signed_in? %>
   <p class="lead"><%= link_to "Create an account", new_user_registration_path %> and join the effort today!</p>
 <% else %>
+  <p class="lead">Check out the <%= link_to 'Leaderboard'.html_safe, leaderboard_by_zipcode_path(current_user.zip_code) %> for this area.
   <% if allow? 'project', 'new' %>
-    <p class="lead">Or, you can <%= link_to 'create a new problem', new_project_path %> right now!</p>
+    Or you can <%= link_to 'create a new problem', new_project_path %> right now!</p>
   <% end %>
 <% end if %>
 
