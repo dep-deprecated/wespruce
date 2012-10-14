@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>WeSpruce.com - Cleaning up our community, one project at a time.</title>
+  <title>
+    <% if @project %>
+      <%= @project.name %> on
+    <% elsif @user %>
+      <%= @user.username %> at
+    <% end %> WeSpruce.com - cleaning up our community, one problem at a time.
+  </title>
 
   <script>
     WS = { current_user: {} }
@@ -17,7 +23,7 @@
 <body class="<%= @body_class %>">
   <div class="container-fluid">
     <div id="user_nav">
-      <div id="logo"><%= link_to "WeSpruce", (user_signed_in? ? projects_path : root_path) %></div>
+      <div id="logo"><%= link_to "WeSpruce", (user_signed_in? ? projects_by_zipcode_path(current_user.zip_code) : root_path) %></div>
       <ul>
         <% if user_signed_in? %>
           <li>Signed in as <i class="icon-user"></i><%= link_to current_user.username, profile_path(current_user.username) %></li>
@@ -40,6 +46,8 @@
   </div>
   <div class="footer">
     &copy; 2012 - Perform the Needful - <%= link_to "Privacy", "/pages/privacy" %> | <%= link_to "Terms of Use", "/pages/terms" %>
+    <br>
+    <a href="http://twitter.com/wespruce" target="_blank">@wespruce</a>
   </div>
 
   <%= render 'common/javascript' %>

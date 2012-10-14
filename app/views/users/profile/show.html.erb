@@ -1,3 +1,5 @@
+<%= render "shared/sharethis" %>
+
 <h1><%= @user.username %> <span>(<%= @user.points %> points<a href="#" class="help" title="The more problems you clean and report, the higher your score. The higher the score, the more badges you earn.">?</a>) <%= generate_badge current_user %> </span></h1>
 
 <% if @user.cleaned_projects.length > 0 %>
