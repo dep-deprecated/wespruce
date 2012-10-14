@@ -8,7 +8,8 @@ require 'yaml'
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(username: "mrclean", email: "mr@clean.com", password: "cleaner", password_confirmation: "cleaner")
+User.create(username: "mrclean", email: "mr@clean.com", password: "cleaner", password_confirmation: "cleaner")
+User.create(username: "reporter", email: "mr@reporter.com", password: "reporter", password_confirmation: "reporter")
 
 seeds = YAML.load_file("#{Rails.root}/db/seeds.yml")
 
