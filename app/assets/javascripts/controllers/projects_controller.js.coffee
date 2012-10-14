@@ -1,3 +1,4 @@
+# INDEX
 jQuery ($) ->
   return unless $('body.projects.index').length > 0
 
@@ -27,3 +28,14 @@ error = () ->
 $ () ->
   $('.geolocate').click () ->
     navigator.geolocation.getCurrentPosition(success, error)
+
+
+# SHOW
+jQuery ($) ->
+  return unless $('body.projects.show').length > 0
+
+  $streets = $('#streetview')
+
+  latlng = new google.maps.LatLng($streets.data('lat'), $streets.data('lng'))
+  console.log latlng
+  WS.project_street_view = new google.maps.StreetViewPanorama(document.getElementById('streetview'), {visible: true, position: latlng})
