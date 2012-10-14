@@ -1,5 +1,6 @@
 module ProjectsHelper
   def project_edit_link(project, user)
+    return unless user
     if project.created_by == user.id && project.state == 'new'
       link_to '<i class="icon-edit"></i>Edit this project'.html_safe, edit_project_path(project)
     end

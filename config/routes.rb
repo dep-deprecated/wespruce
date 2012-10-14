@@ -5,6 +5,7 @@ R12Team365::Application.routes.draw do
 
   resources :projects do
     member do
+      post :comment
       post :claim
       post :verify
       post :unclaim
