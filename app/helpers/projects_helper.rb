@@ -13,8 +13,12 @@ module ProjectsHelper
       if project.creator == current_user
         output << "<p>No one has claimed this project yet</p>"
       else
-        output << "<p class='lead'>No one has claimed this yet. You're free to claim this problem and <strong>get it done</strong>! Just press the button below and begin.</p>"
-        output += button_to "I will do this", claim_project_path(project), class: "btn btn-success btn-large" if project.new? && project.creator != current_user
+        if current_user
+          output << "<p class='lead'>No one has claimed this yet. You're free to claim this problem and <strong>get it done</strong>! Just press the button below and begin.</p>"
+          output += button_to "I will do this", claim_project_path(project), class: "btn btn-success btn-large" if project.new? && project.creator != current_user
+        else
+          output << "<p class='lead'>No one has claimed this yet. #{link_to "Sign up", new_user_registration_path} or #{link_to "sign in", new_user_session_path} to claim it.</p>"
+        end
       end
     elsif project.active?
       output += link_to project.cleaner.username, profile_path(project.cleaner.username)
