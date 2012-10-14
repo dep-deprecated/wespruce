@@ -2,6 +2,19 @@
 
 <h1><%= @user.username %> <span>(<%= @user.points %> points<a href="#" class="help" title="The more problems you clean and report, the higher your score. The higher the score, the more badges you earn.">?</a>) <%= generate_badge current_user %> </span></h1>
 
+<h3>Stats</h3>
+<p><%= @user.points %> points</p>
+
+<% if user_in_top_3? %>
+  <p>This user is in <b><%= place %></b> place in zipcode <%= @user.zip_code %></p>
+<% end %>
+
+<% if @user.badges.any? %>
+  <h4>Badges</h4>
+  <% @user.badges.each do |badge| %>
+    <%= generate_badge badge %><br/>
+  <% end %>
+<% end %>
 <% if @user.projects.length > 0 %>
     <h3>Problems that <%= @user.username %> has been involved in (<%= @user.projects.length %> so far).</h3>
 
