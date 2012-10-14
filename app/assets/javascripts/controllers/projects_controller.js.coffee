@@ -60,10 +60,8 @@ jQuery ($) ->
   return unless $('body.projects.new').length > 0
 
   WS.updateMap = (data) ->
-
-    console.log data
     if WS.previewMap
-      WS.previewMap.setCenter({lat: data.latitude, lng: data.longitude})
+      WS.previewMap.setCenter(data.latitude, data.longitude)
       WS.previewMap.addMarker({lat: data.latitude, lng: data.longitude})
 
     else
