@@ -1,62 +1,46 @@
 <%= render "shared/sharethis" %>
 <div class="row-fluid">
   <div class="span8">
-    <h1><%= @project.name %></h1>
-    <%= project_edit_link(@project, current_user) %>
+    <h1><%= @project.name %></h1><br>
+    <div class='module emphasized-6' id="status-box">
+      <h3>Problem Status</h3>
+      <%= project_button @project %>
+    </div>
+
+    <p class="lead"><%= @project.description %></p>
+
+    <div>
+      <h3>Comments</h3>
+      <%= render partial: 'projects/comment', collection: @comments %>
+    <% if @comments.blank? %>
+      <p>No comments at this time.</p>
+    <% end %>
+      <%= render partial: 'comment_form' if current_user %>
+    </div>
+
+  </div>
+  <div class="span4">
+    <p><%= project_edit_link(@project, current_user) %></p>
     <div class="module emphasized-<%= @project.rating %>">
       <h3>A <%= @project.rating %>-star problem! <span title="<%= meaning_of_rating @project.rating %>" class="help rating rating-<%= @project.rating %>"><%= @project.rating %><span></h3>
       <p><%= meaning_of_rating @project.rating %></p>
     </div>
 
+    <h3>Location <small>(<%= link_to "Get directions", "https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=#{@project.latitude},#{@project.longitude}&ie=UTF8", :target => "_blank" %>)</small></h3>
+    <img class="project-map" src="<%= static_google_map_with_marker(@project.latitude, @project.longitude) %>" width="275" />
     <% if @project.photos.length > 0 %>
+      <h3>Before &amp; After Photos</h3>
       <div class="project_photos gallery module">
         <% @project.photos.each do |photo| %>
           <%= link_to (image_tag photo.image.url), photo.image.url, class: "fancybox-media" %>
         <% end %>
       </div>
     <% end %>
-
-    <p class="lead"><%= @project.description %></p>
-
-    <i class="icon-map-marker"></i><%= link_to 'Back to projects', "javascript:history.back(-1)" %>
-
-    <div class='module'>
-      <% if @project.new? %>
-        <% if @project.creator == current_user %>
-          <p>Noone has claimed this project yet</p>
-        <% else %>
-          <%= button_to "I want to help", claim_project_path(@project) if @project.new? && @project.creator != current_user %>
-        <% end %>
-      <% elsif @project.active? %>
-        <%= link_to @project.cleaner.username, profile_path(@project.cleaner) %> volunteered to fix this.
-        <%= button_to "Unclaim", unclaim_project_path(@project) if @project.cleaner == current_user %>
-        <%= button_to "Mark as Complete", complete_project_path(@project) if @project.cleaner == current_user %>
-      <% elsif @project.completed? %>
-        <%= link_to @project.cleaner.username, profile_path(@project.cleaner) %> has completed this project.
-        <%= button_to "Verify as fixed", verify_project_path(@project) if @project.creator == current_user %>
-      <% elsif @project.verified? %>
-        <p>This project is done!</p>
-      <% end %>
-    </div>
-
-  </div>
-  <div class="span4">
-    <h3>Location <small>(<%= link_to "Get directions", "https://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=#{@project.latitude},#{@project.longitude}&ie=UTF8", :target => "_blank" %>)</small></h3>
-    <img src="<%= static_google_map_with_marker(@project.latitude, @project.longitude) %>" width="275" />
-    <br><br>
-    <% if @project.photos.length > 0 %>
-      <div class="project_photos before">
-        <h3>Problem Photo</h3>
-        <% @project.photos.each do |photo| %>
-          <% if photo.kind == "before" %>
-            <%= link_to (image_tag photo.image.url), photo.image.url, class: "fancybox-media" %>
-          <% end %>
-        <% end %>
+    <% if current_user && @project.cleaned_by == current_user.id && @project.state != 'verified' %>
+      <div class="module emphasized-4">
+        <h3>Add an after photo</h3>
+        <%= link_to 'add a photo', edit_project_path(@project) %>
       </div>
     <% end %>
-    <div class="module emphasized-4">
-      <h3>Add a photo</h3>
-      [TODO]
-    </div>
   </div>
 </div>

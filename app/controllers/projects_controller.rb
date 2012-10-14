@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @comments = @project.comments.page(params[:page])
   end
 
   def new
@@ -25,6 +26,17 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.created_projects.new(project_params)
     @project.save ? redirect_to(project_path(@project)) : render(:new)
+  end
+
+  def comment
+    @project = Project.find(params[:id])
+    if current_user
+      comment = @project.comments.build(comment_params)
+      comment.user = current_user
+      comment.save
+    end
+
+    redirect_to(project_path(@project))
   end
 
   def claim
@@ -83,5 +95,9 @@ private
   def project_params
     params[:project].permit(:name, :description, :rating, :latitude, :longitude,
                             { photos_attributes: [:image, :kind] })
+  end
+
+  def comment_params
+    params[:comment].permit(:title, :comment)
   end
 end

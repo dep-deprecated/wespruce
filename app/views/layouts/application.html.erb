@@ -26,15 +26,15 @@
     <div id="header">
       <div id="logo"><%= link_to "WeSpruce", (user_signed_in? ? projects_by_zipcode_path(current_user.zip_code) : root_path) %></div>
       <ul id="user_nav">
-        <li><%= form_tag projects_path, method: 'get' do %><%= text_field_tag 'zipcode', nil,  placeholder: "Zip Code #{current_user.try(:zip_code)}" %><% end %></li>
+        <li class="hidden-phone"><%= form_tag projects_path, method: 'get' do %><%= text_field_tag 'zipcode', nil,  placeholder: "Enter a ZIP Code #{current_user.try(:zip_code)}" %><% end %></li>
         <% if user_signed_in? %>
           <li>
             <div class="btn-group">
-              <%= link_to '<i class="icon-user"></i>'.html_safe + current_user.username, profile_path(current_user.username), class: "btn" %>
-              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+              <%= link_to '<i class="icon-user"></i>'.html_safe + current_user.username, profile_path(current_user.username), class: "btn btn-small" %>
+              <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to '<i class="icon-map-marker"></i>Your Town'.html_safe, projects_by_zipcode_path(current_user.zip_code) %></li>
-                <li><%= link_to '<i class="icon-map-marker"></i>Near Me'.html_safe, projects_path %></li>
+                <li><%= link_to '<i class="icon-map-marker"></i>My Town'.html_safe + " (#{current_user.try(:zip_code)})", projects_by_zipcode_path(current_user.zip_code) %></li>
+                <li><%= link_to '<i class="icon-screenshot"></i>Near Me'.html_safe, projects_path %></li>
                 <li><%= link_to '<i class="icon-plus-sign"></i>New Problem'.html_safe, new_project_path %></li>
                 <li><%= link_to '<i class="icon-edit"></i>Account'.html_safe, edit_user_registration_path %></li>
                 <li class="divider"></li>
@@ -43,11 +43,11 @@
             </div>
           </li>
         <% else %>
-          <li><%= link_to '<i class="icon-plus-sign"></i>Sign up'.html_safe, new_user_registration_path, class: "btn btn-secondary" %></li>
+          <li><%= link_to '<i class="icon-plus-sign"></i>Sign up'.html_safe, new_user_registration_path, class: "btn btn-small btn-secondary" %></li>
           <li>
             <div class="btn-group">
-              <%= link_to '<i class="icon-user icon-white"></i> Sign in'.html_safe, new_user_session_path, class: "btn btn-primary" %>
-              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+              <%= link_to '<i class="icon-user icon-white"></i> Sign in'.html_safe, new_user_session_path, class: "btn btn-small btn-primary" %>
+              <a class="btn btn-small btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to 'Sign in', new_user_session_path %></li>
                 <li class="divider"></li>
@@ -56,7 +56,7 @@
               </ul>
             </div>
           </li>
-          <li><%= link_to '<i class="icon-map-marker"></i>Near Me'.html_safe, projects_path, class: "btn btn-info" %></li>
+          <li><%= link_to '<i class="icon-map-marker"></i>Near Me'.html_safe, projects_path, class: "btn btn-small btn-info" %></li>
         <% end %>
       </ul>
     </div>
