@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   include AASM
+  reverse_geocoded_by :latitude, :longitude
 
   REWARD_POINTS = {1 => 1, 2 => 3, 3 => 12, 4 => 50, 5 => 100}.freeze
 
@@ -11,7 +12,7 @@ class Project < ActiveRecord::Base
 
   has_many :photos, as: :owner
 
-  scope :open, where(completed_at: nil).order(:id)
+  scope :open, where(completed_at: nil)
 
   validates_presence_of :name, :description, :rating, :latitude, :longitude
 
