@@ -21,6 +21,8 @@ module ApplicationHelper
   end
 
   def generate_badge user
+    return if user.sash_id.nil?
+
     output = "<div class='badge badge-#{user.sash_id}'>"
     if user.sash_id == 1
       output << "Reporter"
@@ -34,7 +36,7 @@ module ApplicationHelper
     output << "</div>"
 
     return output.html_safe
-  end 
+  end
 
   def notice_tag
     return unless flash[:notice].present?

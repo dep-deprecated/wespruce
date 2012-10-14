@@ -20,12 +20,15 @@
 blockquote
   :font-size 12px
 
-
 #project_map
   width: 80%
   height: 400px
   margin-bottom: 20px
   float: left
+
+#project_map,
+.project_map
+  :width 100%
 
   img
     max-width: none
@@ -85,7 +88,6 @@ blockquote
       :float left
       :margin 5px
 
-
 /* Modal
 .modal-body
   padding-bottom: 2em
@@ -107,3 +109,14 @@ blockquote
       width: 450px
       height: 6em
 
+.comments
+  :background #fafafa
+  :border-left 2px solid #ddd
+  :padding 10px
+  .comments-inner
+    :width 95%
+    :margin 0 auto
+
+  textarea
+    :width 95%
+    :height 70px
