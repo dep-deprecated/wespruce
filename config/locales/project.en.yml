@@ -1,8 +1,8 @@
 en:
   project:
     rating:
-      '1': about 5 minutes
-      '2': about 15 minutes
-      '3': about an hour
+      '1': about 15 minutes
+      '2': under an hour
+      '3': a couple of hours
       '4': about 4 hours
       '5': "about 8 hours (a full day's work)"
