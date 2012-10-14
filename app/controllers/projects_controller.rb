@@ -19,6 +19,13 @@ class ProjectsController < ApplicationController
     @comments = @project.comments.page(params[:page])
   end
 
+  def search
+    render json: {} if params[:query].blank?
+
+    location = geocode(params[:query])
+    render json: { latitude: location['latitude'], longitude: location['longitude'] }
+  end
+
   def new
     @project = Project.new(latitude: request.location.latitude, longitude: request.location.longitude)
   end

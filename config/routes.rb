@@ -4,6 +4,7 @@ R12Team365::Application.routes.draw do
   get 'users/profile/:username', to: 'users/profile#show', as: :profile, username: %r([^/;,?]+)
 
   resources :projects do
+    get :search, on: :collection
     member do
       post :comment
       post :claim
