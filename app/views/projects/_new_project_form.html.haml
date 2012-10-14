@@ -1,13 +1,10 @@
-#new_project_form.modal.hide.fade
+#new_project_form.modal.hide
 
   %header.modal-header
     %h3
       New Project
 
-  = simple_form_for :project, url: '/projects', method: 'post', html: {multipart: true} do |f|
-    = f.input :latitude, as: :hidden, value: ''
-    = f.input :longitude, as: :hidden, value: ''
-
+  = simple_form_for :project do |f|
     .modal-body
       %div.name
         = f.input :name

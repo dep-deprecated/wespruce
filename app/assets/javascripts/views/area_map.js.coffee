@@ -19,9 +19,9 @@ class AreaMap
     @$new_project_form = $('#new_project_form')
 
   registerEvents: ->
-    @$new_project_marker.on({ dragstart: @startNewProjectDrag })#, dragend: @stopNewProjectDrag })
-    google.maps.event.addListener( @gmap.map, 'dragend', @newProjectDrop )
-    google.maps.event.addListener( @gmap.map, 'drop', @newProjectDrop )
+    @$new_project_marker.on({ dragstart: @startNewProjectDrag })
+    # google.maps.event.addListener( @gmap.map, 'dragend', @newProjectDrop )
+    # google.maps.event.addListener( @gmap.map, 'drop', @newProjectDrop )
     google.maps.event.addListener( @gmap.map, 'mouseup', @newProjectDrop )
 
   addMarkers: (projects) ->
@@ -30,7 +30,6 @@ class AreaMap
 
   startNewProjectDrag: (evt) =>
     @draggingNewProject = true
-    console.log evt
 
   stopNewProjectDrag: (evt) =>
     @draggingNewProject = false
@@ -45,6 +44,8 @@ class AreaMap
 
   createNewProject: (lat, lng) ->
     $form = @$new_project_form
+    $form.find('[name="project[latitude]"]').val(lat)
+    $form.find('[name="project[longitude]"]').val(lng)
     $form.modal({backdrop: 'static', keyboard: true})
 
     # Set hide on cancel button

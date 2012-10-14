@@ -1,8 +1,10 @@
 <%= render "shared/sharethis" %>
+
 <h1>Current Problems</h1>
 <p class="lead">
-  Here's a map showing problems in this community.  Click on a problem to learn more about it.
-<p>
+  Here's a map showing problems in your community.  Click on a problem to learn more about it.
+</p>
+
 <% if not user_signed_in? %>
   <p class="lead"><%= link_to "Create an account", new_user_registration_path %> and join the effort today!</p>
 <% else %>
@@ -17,12 +19,13 @@
 <% else %>
   <div id="project_map"></div>
 
-  <% if user_signed_in? %>
+  <% if user_signed_in? && allow?('project', 'new') %>
     <div id="project_controls">
-      <div id="new_project_marker" draggable="true">New Project</div>
+      <div id="new_project_marker" draggable="true"><img src="http://maps.google.com/mapfiles/marker_green.png"/><p>New Project Marker</p></div>
+      <h6>Drag me to the map to create a new project!</h6>
     </div>
     <%= render 'projects/new_project_modal' %>
-  <% end if %>
+  <% end %>
 
   <table border="0" cellspacing="0" cellpadding="0" width="100%" class="table table-striped table-bordered">
     <thead>

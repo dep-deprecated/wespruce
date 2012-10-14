@@ -23,7 +23,6 @@ blockquote
 
 #project_map
   width: 80%
-  margin-right: 4%
   height: 400px
   margin-bottom: 20px
   float: left
@@ -53,20 +52,36 @@ blockquote
       margin: 0 15px 0 0
 
 #project_controls
-  width: 8%
-  padding: 2%
+  margin-left: 85%
+  padding: 10px
   border: 2px solid #cdc
   border-radius: 6px
-
-  div:first-child
+  background-color: #cdc
 
   #new_project_marker
     display: block
     width: 20px
-    height: 60px
-    background: url(http://maps.google.com/mapfiles/marker_green.png) no-repeat
-    text-indent: -9999em
+    height: 35px
+    float: left
+    margin: 0 10px 15px 0
+    cursor: move
+    background-image: url("http://maps.google.com/mapfiles/marker_green.png")
+    background-repeat: no-repeat
 
+    p
+      text-indent: -9999em
+
+
+    &:after
+      content: ''
+      background-image: url("http://maps.google.com/mapfiles/marker_green.png")
+      background-repeat: no-repeat
+
+    span
+      text-indent: -9999em
+
+  h6
+    margin-top: 0
 
 .project_photos
   &.before
