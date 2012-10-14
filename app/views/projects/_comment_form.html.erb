@@ -1,0 +1,10 @@
+<%= simple_form_for @project.comments.build, url: comment_project_path(@project) do |f| %>
+  <div class="form-inputs module">
+    <%= f.input :title, required: true %>
+    <%= f.input :comment, required: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Submit Comment' %>
+  </div>
+<% end %>

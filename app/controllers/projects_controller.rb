@@ -30,7 +30,11 @@ class ProjectsController < ApplicationController
 
   def comment
     @project = Project.find(params[:id])
-    @project.comments.create(comment_params) if current_user
+    if current_user
+      comment = @project.comments.build(comment_params)
+      comment.user = current_user
+      comment.save
+    end
 
     redirect_to(project_path(@project))
   end
@@ -94,8 +98,6 @@ private
   end
 
   def comment_params
-    hash = params[:comment].permit(:title, :comment)
-    hash.merge(user_id: current_user.id)
-    hash
+    params[:comment].permit(:title, :comment)
   end
 end
