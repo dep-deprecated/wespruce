@@ -8,7 +8,7 @@
     .modal-body
       %div.name
         = f.input :name
-        = f.input :rating, collection: (1..5), required: true, :item_wrapper_class => 'inline'
+        = f.input :rating, collection: I18n.t('project.rating').values.zip(I18n.t('project.rating').keys), required: true, :item_wrapper_class => 'inline'
       %div.desc
         = f.input :description, as: :text
 
