@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def projects
+    Project.where('created_by = :user OR cleaned_by = :user', user: self.id)
+  end
+
   def password_required?
     super && provider.blank?
   end
