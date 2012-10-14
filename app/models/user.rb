@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_merit
+  geocoded_by :zip_code
+  after_validation :geocode
 
   has_one :photo, as: :owner
   has_many :created_projects,   class_name: 'Project', foreign_key: :created_by
