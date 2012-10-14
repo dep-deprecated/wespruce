@@ -6,7 +6,9 @@
       <%= @project.name %> on
     <% elsif @user %>
       <%= @user.username %> at
-    <% end %> WeSpruce.com - cleaning up our community, one problem at a time.
+    <% elsif @projects and current_user %>
+      Active problems in my hometown (zip: <%= current_user.zip_code %>) on
+    <% end %> WeSpruce.com: Let's beautify our community one problem at a time.
   </title>
 
   <script>
