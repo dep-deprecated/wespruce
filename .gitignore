@@ -10,6 +10,9 @@
 /vendor/bundles
 /config/initializers/quiet_assets.rb
 
+# Ignore local photo dir
+/public/system/photos
+
 .sass-cache
 
 .rbenv-vars
