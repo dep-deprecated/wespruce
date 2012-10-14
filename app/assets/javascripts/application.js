@@ -15,6 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require gmaps
+//= require twitter/bootstrap/modal
 
 //= require_tree ./views
 //= require_tree ./controllers

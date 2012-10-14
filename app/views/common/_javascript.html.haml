@@ -10,6 +10,8 @@
 = javascript_include_tag 'fancybox/jquery.fancybox.pack.js'
 
 %script
+  if (typeof console !== undefined) { log = console.log; }
+
   - if @user_latlng
     != "WS.current_user.lat = '#{@user_latlng['latitude']}';"
     != "WS.current_user.lng = '#{@user_latlng['longitude']}';"
