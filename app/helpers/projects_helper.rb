@@ -1,9 +1,40 @@
 module ProjectsHelper
   def project_edit_link(project, user)
     if project.created_by == user.id && project.state == 'new'
-      link_to 'edit', edit_project_path(project)
-    elsif project.cleaned_by == user.id && project.state != 'verified'
-      link_to 'add photo', edit_project_path(project)
+      link_to '<i class="icon-edit"></i>Edit this project'.html_safe, edit_project_path(project)
     end
   end
+
+  def project_button project
+    output = ""
+
+    if project.new?
+      if project.creator == current_user
+        output << "<p>No one has claimed this project yet</p>"
+      else
+        output << "<p class='lead'>No one has claimed this yet. You're free to claim this problem and <strong>get it done</strong>! Just press the button below and begin.</p>"
+        output += button_to "I will do this", claim_project_path(project), class: "btn btn-success btn-large" if project.new? && project.creator != current_user
+      end
+    elsif project.active?
+      output += link_to project.cleaner.username, profile_path(project.cleaner)
+      output << " is currently working on this."
+      output += button_to "Unclaim", unclaim_project_path(project), class: "btn btn-danger" if project.cleaner == current_user
+      output += button_to "Mark as Complete", complete_project_path(project), class: "btn btn-success" if project.cleaner == current_user
+    elsif project.completed?
+      output += link_to project.cleaner.username, profile_path(project.cleaner)
+      output << " has completed this project. "
+      if project.cleaner == current_user
+          output += link_to 'Ready to add an after photo?', edit_project_path(@project)
+      end
+      output += button_to "Verify as fixed", verify_project_path(project), class: "btn btn-success" if project.creator == current_user
+    elsif project.verified?
+      output << "<p>This project is done!</p>"
+      if project.cleaner == current_user
+          output += link_to 'Ready to add an after photo?', edit_project_path(@project)
+      end
+    end
+
+    return output.html_safe
+  end
+
 end

@@ -7,6 +7,7 @@ body
 .container-fluid
   :border 1px solid #eee
   :width 75%
+  :min-width 875px
   :margin 20px auto 5px
   :padding 0
   :background #fff
@@ -25,10 +26,10 @@ body
     :float left
     a
       :display block
-      :width 264px
+      :width 240px
       :height 100px
       :background image-url('logo.png') 0 0 no-repeat
-      :margin 10px 20px
+      :margin 10px 0 10px 20px
       :text-indent -9999em
       :font-size 12px
       :color #ccc
@@ -88,6 +89,9 @@ img
   :padding 10px
   :margin-bottom 30px
 
+  form
+    :margin 0
+
   a
     :text-decoration underline
 
@@ -124,6 +128,18 @@ img
     input
       :color #000
 
+  &.emphasized-6
+    :overflow hidden
+    :background #fafafa
+    :border 1px solid #ddd
+    :border-radius 0
+
+    p
+      :margin 0
+    input.btn
+      :margin 10px 5px 0 0
+      :float left
+
 
   &.de-emphasized-1
     :opacity 0.5
@@ -158,6 +174,7 @@ a.help
 .sharethis_container
   :float right
   :width 525px
+  :margin-bottom 20px
 
 img.shadow
   :box-shadow 1px 3px 10px #aaa
