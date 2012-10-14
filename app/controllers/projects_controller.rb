@@ -3,11 +3,15 @@ class ProjectsController < ApplicationController
   DEFAULT_IP = '24.5.177.29'
 
   def index
-    @projects = Project.open.page(params[:page])
+    @user_latlng =  if params[:zipcode]
+                      geocode(params[:zipcode])
+                    else
+                      (request.remote_ip == '127.0.0.1') ? geocode(DEFAULT_IP) : request.location.data
+                    end
 
-    ip = (request.remote_ip == '127.0.0.1') ? DEFAULT_IP : request.remote_ip
-    @geodata = geocode_ip(ip)
-    @user_latlng = @geodata.select { |k,v| %w(latitude longitude).include?(k) } if @geodata
+    @projects = Project.open.
+      near([@user_latlng['latitude'], @user_latlng['longitude']], 20, order: :distance).
+      page(params[:page])
   end
 
   def show
@@ -24,9 +28,19 @@ class ProjectsController < ApplicationController
   end
 
 private
+  def geocode(query)
+    begin
+       data = Geocoder.search(query).first.data
+       return data if data['latitude'] && data['longitude']
+
+       { 'latitude' => data['geometry']['location']['lat'], 'longitude' => data['geometry']['location']['lng'] }
+    rescue => e
+      logger.debug("Failed to geocode #{query}")
+      return nil
+    end
+  end
 
   def project_params
     params[:project].permit(:name, :description, :rating, :latitude, :longitude)
   end
-
 end

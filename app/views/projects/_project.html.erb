@@ -11,4 +11,9 @@
   <td>
     <span title="<%= meaning_of_rating project.rating %>" class="help rating rating-<%= project.rating %>"><span><%= project.rating %></span></span>
   </td>
+<% if project.respond_to?(:distance) %>
+  <td>
+    <%= project.distance.round(2) %> miles
+  </td>
+<% end %>
 </tr>
