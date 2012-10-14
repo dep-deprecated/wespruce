@@ -11,12 +11,12 @@ class Project < ActiveRecord::Base
   after_create :assign_reporter_points
 
   has_many :photos, as: :owner, dependent: :destroy
-  accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos, reject_if: ->(attributes) { attributes['image'].blank? }
 
-  scope :open, where(completed_at: nil)
-  scope :verified, where(state: 'verified')
+  scope :open,      where(completed_at: nil)
+  scope :verified,  where(state: 'verified')
   scope :completed, where(state: 'completed')
-  scope :active, where(state: 'active')
+  scope :active,    where(state: 'active')
 
   validates_presence_of :name, :description, :rating, :latitude, :longitude
 
@@ -44,8 +44,20 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def can_add_cleaned_photos?(user)
+    self.cleaned_by == user.id && self.state != 'verified'
+  end
+
+  def editable?(user)
+    self.created_by == user.id && self.state == 'new'
+  end
+
   def length
     I18n.t("project.rating.#{rating}")
+  end
+
+  def new_photo_state
+    self.state == 'new' ? 'before' : 'after'
   end
 
   def remove_completed_at

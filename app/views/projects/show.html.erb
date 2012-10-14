@@ -2,6 +2,7 @@
 <div class="row-fluid">
   <div class="span8">
     <h1><%= @project.name %></h1>
+    <%= project_edit_link(@project, current_user) %>
     <div class="module emphasized-<%= @project.rating %>">
       <h3>A <%= @project.rating %>-star problem! <span title="<%= meaning_of_rating @project.rating %>" class="help rating rating-<%= @project.rating %>"><%= @project.rating %><span></h3>
       <p><%= meaning_of_rating @project.rating %></p>

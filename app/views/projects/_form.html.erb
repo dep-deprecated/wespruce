@@ -1,0 +1,35 @@
+<%= simple_form_for(@project, html: { multipart: true }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  <% if @project.editable?(current_user) %>
+    <%= f.input :name, required: true, autofocus: true, maxlength: 145 %>
+    <%= f.input :description, required: true %>
+    <%= f.label :rating, required: true %>
+    <%= f.collection_radio_buttons :rating, I18n.t('project.rating').to_a, :first, :last, required: true, :item_wrapper_class => 'inline' %>
+    <br>
+    <div class="module">
+      <h3>Attach your location</h3>
+      <%= link_to 'Use my current location', '#', class: 'geolocate', remote: true %>
+      <div id="map_preview"></div>
+      <%= f.input :latitude, required: true, as: :hidden %>
+      <%= f.input :longitude, required: true, as: :hidden %>
+    </div>
+    <div class="module">
+      <h3>Attach a before photo</h3>
+      <%= f.input 'photos_attributes[][image]', label: 'Image', as: :file, required: false %>
+      <%= f.input 'photos_attributes[][kind]', as: :hidden, input_html: { value: 'before' } %>
+    </div>
+  <% elsif @project.can_add_cleaned_photos?(current_user) %>
+    <div class="module">
+      <h3>Attach an after photo</h3>
+      <%= f.input 'photos_attributes[][image]', label: 'Image', as: :file, required: false %>
+      <%= f.input 'photos_attributes[][kind]', as: :hidden, input_html: { value: 'after' } %>
+    </div>
+  <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, @project.new_record? ? 'Create' : 'Update' %>
+  </div>
+<% end %>
