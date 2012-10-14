@@ -27,6 +27,14 @@ class ProjectsController < ApplicationController
     @project.save ? redirect_to(project_path(@project)) : render(:new)
   end
 
+  def edit
+    @project = current_user.projects.find(params[:id])
+    redirect_to(projects_path) unless @project
+  end
+
+  def update
+
+  end
 private
   def geocode(query)
     begin
