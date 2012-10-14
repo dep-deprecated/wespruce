@@ -12,7 +12,7 @@
       <td width="20"><%= i %></td>
       <td>
         <%= link_to user.username, profile_path(user.username) %>
-        <% if @user.badges.any? %>
+        <% if user.badges.any? %>
           <% user.badges.each do |badge| %>
             <%= generate_badge badge %>
           <% end %>
