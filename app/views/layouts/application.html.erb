@@ -22,7 +22,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="<%= @body_class %>">
-  <script src="http://s0.railsrumble.com/banner.js"; type="text/javascript"></script>
   <div class="container-fluid">
     <div id="header">
       <div id="logo"><%= link_to "WeSpruce", (user_signed_in? ? projects_by_zipcode_path(current_user.zip_code) : root_path) %></div>
