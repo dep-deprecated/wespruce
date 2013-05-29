@@ -32,6 +32,8 @@ GEM
       activesupport (= 3.2.8)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-postgresql-adapter (0.0.1)
+      pg
     activeresource (3.2.8)
       activemodel (= 3.2.8)
       activesupport (= 3.2.8)
@@ -139,6 +141,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.4.0)
       mime-types
+    pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.10)
       coderay (~> 1.0.5)
@@ -201,6 +204,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  activerecord-postgresql-adapter
   acts_as_commentable (= 3.0.1)
   awesome_print
   bootstrap-sass-rails
