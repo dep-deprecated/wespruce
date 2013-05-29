@@ -16,6 +16,7 @@ gem 'rails',            '3.2.8'
 gem 'simple_form'
 gem 'strong_parameters', github: 'rails/strong_parameters'
 gem 'merit'
+gem 'activerecord-postgresql-adapter'
 
 group :assets do
   gem 'bootstrap-sass-rails'
