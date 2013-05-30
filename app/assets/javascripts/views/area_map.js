@@ -95,7 +95,7 @@ AreaMap = (function() {
   };
 
   AreaMap.prototype.new_project_opts = {
-    animation: google.maps.Animation.BOUNCE,
+    animation: google.maps.Animation.DROP,
     icon: 'http://maps.google.com/mapfiles/marker_green.png'
   };
 
