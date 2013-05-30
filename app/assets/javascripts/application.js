@@ -51,3 +51,12 @@ function init_fancybox() {
       }
   });
 }
+
+$("#zipcode").keypress(function(event) {
+    if($(this).val().length < 5 && event.keyCode == 13) {
+        return false;
+    }
+});
+$("#zipcode").keyup(function() {
+    $(this).val($(this).val().replace(/[^\d]/g, ""));
+});
