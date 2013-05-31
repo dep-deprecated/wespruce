@@ -5,9 +5,9 @@
       <strong>weSpruce</strong> turns <em>people-powered</em> community beautification in to a game!
       This platform enables you to quickly and easily clean your own home town. Report and fix problems,
       earn points and compete to be the best do-gooder in your town!
-      So what's going on in <strong>YOUR</strong> town? <%= link_to 'Take a peek', projects_path %>.
     </p>
-    <%= image_tag "http://bit.ly/SW3kFb", :class => "shadow", :alt => "Map Example" %>
+    <p class="lead">So what's going on in <strong>YOUR</strong> town? <%= link_to 'Take a peek', projects_path %>.</p>
+    <%= image_tag "home_splash.png" %>
     <p>
       It works by enabling users to report <strong>problem spots</strong> within their community.
       With the power of <strong>Google Maps</strong>, users can report problems right in their
@@ -20,18 +20,24 @@
   <div class="span4 hidden-phone">
     <div class="module emphasized-4" onclick="document.location.href='<%= new_user_registration_path %>'">
       <h3>Report Problems</h3>
-      <p>Find the problem spots in your community. Perhaps it's a pile of tires, a discarded mattress, or a fence that needs mending. You're part of the solution! Add photos, converse with locals -- connect!</p>
-      <p><%= link_to 'Sign up', new_user_registration_path %> and get started!</p>
+      <p>Find the problem spots in your community. Perhaps it's a pile of tires, a discarded mattress, or a fence that needs mending. You're part of the solution!</p>
+      <p>Add photos, converse with locals -- connect!</p>
+      <h3><%= link_to 'Sign up', new_user_registration_path %> and get started!</h3>
+    </div>
+    <div class="module emphasized-2" onclick="document.location.href='<%= new_user_registration_path %>'">
+      <h3>Mobile Ready</h3>
+      <p>We know you need the ability to submit problems while you are out and about. Our site is designed with your mobile device in mind and automatically adjusts to fit your phone. Using HTML5, you can submit problems and post photos on the go (Proper Android/iOS apps are on the roadmap)!</p>
+      <h3><%= link_to 'Get an account', new_user_registration_path %> and try it out!</h3>
     </div>
     <div class="module emphasized-3" onclick="document.location.href='<%= new_user_registration_path %>'">
       <h3>Be the Hero!</h3>
       <p>Have the means to fix problems? Want to beautiful your community but don't know how? Just view the map, claim a problem, and <strong>fix it</strong>! Maybe you'll even want to share your accomplishment with a photo. It's that easy.</p>
-      <p>Excited? <%= link_to 'Create an account', new_user_registration_path %> and let's go!</p>
+      <h3>Excited? <%= link_to 'Create an account', new_user_registration_path %> and let's go!</h3>
     </div>
     <div class="module emphasized-5" onclick="document.location.href='<%= new_user_registration_path %>'">
       <h3>Earn Points &amp; Compete</h3>
-      <p>Compete in your town to be the best and brightest do-gooder out there. The more problems you fix, the more points and achievements you get. See the top cleaners in each town and <strong>go for the gold</strong>!</p>
-      <p>Start earning points <%= link_to 'right now', new_user_registration_path %>.</p>
+      <p>Compete in your town to be the best and brightest do-gooder out there. The more problems you fix, the more points and achievements you get. See the top cleaners in each town and <strong>go for the gold</strong>! Each town has a leaderboard. How will you rank?</p>
+      <h3>Start earning points <%= link_to 'right now', new_user_registration_path %>.</h3>
     </div>
   </div>
 </div>

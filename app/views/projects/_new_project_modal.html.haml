@@ -4,24 +4,35 @@
     %h3
       New Project
 
-  = simple_form_for :project, url: '/projects', method: 'post', html: {multipart: true} do |f|
-    = f.input :latitude, as: :hidden, value: ''
-    = f.input :longitude, as: :hidden, value: ''
+  - if not user_signed_in?
+    %div.pad
+      %p
+        You need to log in to do this.
+        %br
+        = link_to "Sign up", new_user_registration_path
+        or
+        = link_to "sign in", new_user_session_path
+        to get started.
 
-    .modal-body
-      %div.name
-        = f.input :name
+  - else
+    = simple_form_for :project, url: '/projects', method: 'post', html: {multipart: true} do |f|
+      = f.input :latitude, as: :hidden, value: ''
+      = f.input :longitude, as: :hidden, value: ''
 
-        = f.input :rating, collection: I18n.t('project.rating').values.zip(I18n.t('project.rating').keys), required: true, :item_wrapper_class => 'inline'
+      .modal-body
+        %div.name
+          = f.input :name
 
-      %div.desc
-        = f.input :description, as: :text
+          = f.input :rating, collection: I18n.t('project.rating').values.zip(I18n.t('project.rating').keys), required: true, :item_wrapper_class => 'inline'
 
-      %h4
-        Attach a before photo
-      = f.input 'photos_attributes[][image]', label: 'Image', as: :file, required: false
-      = f.input 'photos_attributes[][kind]', as: :hidden, input_html: { value: 'before' }
+        %div.desc
+          = f.input :description, as: :text
 
-    .modal-footer
-      %input{ class: 'btn btn-cancel', type: 'cancel', value: 'Cancel'}
-      = f.button :submit, class: 'btn btn-success'
+        %h4
+          Attach a before photo
+        = f.input 'photos_attributes[][image]', label: 'Image', as: :file, required: false
+        = f.input 'photos_attributes[][kind]', as: :hidden, input_html: { value: 'before' }
+
+      .modal-footer
+        %input{ class: 'btn btn-cancel', type: 'cancel', value: 'Cancel'}
+        = f.button :submit, class: 'btn btn-success'
